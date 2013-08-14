@@ -1,0 +1,61 @@
+﻿@model FnR.Models.Subscription
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_WarehouseLayout.cshtml";
+}
+
+
+<div id="details-content"> 
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Subscription</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.User.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.FirstName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pet.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pet.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Product.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Product.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vet.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vet.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateSubscribed)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateSubscribed)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NextDeliveryDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NextDeliveryDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+</div>

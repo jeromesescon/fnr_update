@@ -1,0 +1,76 @@
+﻿@model FnR.Models.Subscription
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_WarehouseLayout.cshtml";
+}
+
+
+<div id="create-content">
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Subscription</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserId, "User")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("UserId", String.Empty)
+            @Html.ValidationMessageFor(model => model.UserId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetId, "Pet")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PetId", String.Empty)
+            @Html.ValidationMessageFor(model => model.PetId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ProductId, "Product")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ProductId", String.Empty)
+            @Html.ValidationMessageFor(model => model.ProductId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VetId, "Vet")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("VetId", String.Empty)
+            @Html.ValidationMessageFor(model => model.VetId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateSubscribed)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateSubscribed)
+            @Html.ValidationMessageFor(model => model.DateSubscribed)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NextDeliveryDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NextDeliveryDate)
+            @Html.ValidationMessageFor(model => model.NextDeliveryDate)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    </div>

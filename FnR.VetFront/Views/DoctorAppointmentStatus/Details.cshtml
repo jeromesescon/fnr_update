@@ -1,0 +1,39 @@
+﻿@model FnR.Models.DoctorAppointmentStatus
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Doctor Appointment Status Details</legend>
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Doctor.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Doctor.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ExpectedWaitTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExpectedWaitTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ExpectedDurationOfDelay)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExpectedDurationOfDelay)
+    </div>
+
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

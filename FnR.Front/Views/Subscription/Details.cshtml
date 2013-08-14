@@ -1,0 +1,56 @@
+﻿@model FnR.Models.Subscription
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_FnRLayout.cshtml";
+}
+
+<div id="details-content"> 
+
+<div class="h2">
+<h2>Selected Subscription Details</h2></div>
+
+<div id="backlistbtn">
+    <a href="@Url.Action("Index")">
+        <img src="~/Content/Images/backtolist-button.png" onmouseover="this.src='../../Content/Images/backtolist-button-hover.png' " onmouseout="this.src='../../Content/Images/backtolist-button.png'" /></a>
+</div>
+
+<fieldset>
+    <legend>Subscription</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UserId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.User.FullName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Pet.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Pet.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Product.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Product.DisplayName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vet.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vet.Name)
+    </div>
+
+    <div id="editbtn">
+        <a href="@Url.Action("Edit", new { id=Model.Id })" >
+            <img src="~/Content/Images/edit-button.png" onmouseover="this.src='../../Content/Images/edit-button-hover.png' " onmouseout="this.src='../../Content/Images/edit-button.png'" /></a>
+    </div>
+
+</fieldset>
+
+</div>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://www.eway.com.au/gateway/rebill/manageRebill.asmx?wsdl" docRef="https://www.eway.com.au/gateway/rebill/manageRebill.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://www.eway.com.au/gateway/rebill/manageRebill.asmx" xmlns:q1="http://www.eway.com.au/gateway/rebill/manageRebill" binding="q1:manageRebillSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://www.eway.com.au/gateway/rebill/manageRebill.asmx" xmlns:q2="http://www.eway.com.au/gateway/rebill/manageRebill" binding="q2:manageRebillSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

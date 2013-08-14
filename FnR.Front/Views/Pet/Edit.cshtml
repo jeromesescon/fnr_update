@@ -1,0 +1,81 @@
+﻿@using System.Web.Optimization
+@model FnR.Models.Pet
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_FnRLayout.cshtml";
+}
+
+<div id="edit-content">
+
+<div class="h2">
+    <h2>Update Selected Pet</h2></div>
+
+<div id="backlistbtn">
+    <a href="@Url.Action("Index")" >
+        <img src="~/Content/Images/backtolist-button.png" onmouseover="this.src='../../Content/Images/backtolist-button-hover.png' " onmouseout="this.src='../../Content/Images/backtolist-button.png ' " /></a>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Pet</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BreedId, "Pet Breed")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BreedId", "-- Select Pet Breed --")
+            @Html.ValidationMessageFor(model => model.BreedId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Birthday)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Birthday)
+            @Html.ValidationMessageFor(model => model.Birthday)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserId, "Pet Owner")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("UserId", "-- Select Pet Owner --")
+            @Html.ValidationMessageFor(model => model.UserId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Weight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Weight)
+            @Html.ValidationMessageFor(model => model.Weight)
+        </div>
+
+        <div id="createbtn">
+            <input class="btn" type="submit" value="Save"/>
+        </div>
+    </fieldset>
+}
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/pet.js"></script>
+}

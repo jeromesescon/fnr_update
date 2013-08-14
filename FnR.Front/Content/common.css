@@ -1,0 +1,259 @@
+﻿body {
+    background: url('../Content/Images/bg.jpg') repeat;
+}
+
+.body {
+    
+}
+
+fieldset {
+    border: solid 1px #222;
+    padding-left: 50px;
+    padding-right: 60px;
+    padding-bottom: 20px;
+    padding-top: 26px;
+    border-radius: 10px;
+    background-image: linear-gradient(bottom, #000000 0%, #454545 57%);
+    background-image: -o-linear-gradient(bottom, #000000 0%, #454545 57%);
+    background-image: -moz-linear-gradient(bottom, #000000 0%, #454545 57%);
+    background-image: -webkit-linear-gradient(bottom, #000000 0%, #454545 57%);
+    background-image: -ms-linear-gradient(bottom, #000000 0%, #454545 57%);
+
+    background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, #000000),
+	color-stop(0.57, #454545)
+);
+    -webkit-box-shadow: 0px 0px 20px #eee;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: 436px;
+}
+
+fieldset.form {
+    width: 284px;
+    background: #444;
+    padding: 30px;
+}
+
+fieldset .field {
+    overflow: hidden;
+    color: #FFFFFF;
+}
+
+fieldset label {
+    margin-right: 0px;
+}
+
+fieldset input[type=text], fieldset input[type=password], fieldset input[type=datetime], fieldset input[type=email], fieldset input[type=number] {
+    margin-bottom: 8px;
+    width: 206px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    padding: 5px;
+    background: #ddd;
+    font-family: "Times New Roman",Georgia,Serif;
+    font-size: 18px;
+    float: right;
+    margin-top: -46px;
+}
+
+fieldset select {
+    width: 218px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    background: #ddd;
+    font-size: 16px;
+    border: 1px solid #000;
+    font-family: "Times New Roman",Georgia,Serif;
+    float: right;
+    margin-bottom: 7px;
+    margin-top: -46px;
+}
+
+
+fieldset.form input[type=submit] {
+    float: right;
+    padding: 4px;
+}
+
+.field-validation-error {
+    text-align: right;
+    font-size: 12px;
+    color: red;
+    margin-right: 3px;
+}
+
+.input-validation-error {
+    border: solid 1px red;
+}
+
+.validation-summary-errors {
+    margin-top: 0 !important;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.validation-summary-errors ul {
+    margin-top: 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: red;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    text-decoration: underline;
+}
+
+.h2 {
+    background: #333;
+    margin-bottom: 10px;
+    width: 198px;
+    margin-left: -30px;
+    -webkit-transition: all 0.10s ease;
+}
+    .h2:hover {
+        -webkit-box-shadow: 0px 0px 20px #fff;
+    }
+    h2 {
+        color: #FFFFFF;
+        font-size: 20px;
+        margin-left: 28px;
+        padding: 5px;
+    }
+
+h3 {
+    color: #cb0000;
+    text-align: center;
+}
+
+
+th, td {
+    border: solid 1px rgb(0, 0, 0);
+    color: #000;
+    padding: 10px;
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+}
+
+.editor-label, .display-label {
+    text-decoration: underline;
+    font-family:"Times New Roman",Georgia,Serif;    
+    color: #999;
+    margin-bottom: 19px;
+    margin-top: 4px;
+}
+    .editor-label:hover, .display-label:hover {
+        color: #eee;
+    }
+
+.editor-field, .display-field {
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+legend {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#far-logo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#far-logo img{
+    width: 250px;
+}
+
+#home {
+    overflow: hidden;
+    width: 755px;
+    border: solid 1px #666;
+    -webkit-box-shadow: 0px 0px 20px #222;
+    -moz-box-shadow: 0px 0px 20px #222;
+    padding: 60px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    background-image: url('../Content/Images/bg-dashboard.jpg');
+}
+
+.nav {
+    float: left;
+    margin-left: 20px;
+    display: block;
+    width: 220px;
+    height: 119px;
+    padding-top: 70px;
+    margin-bottom: 70px;
+    text-align: center;
+}
+
+.nav img {
+    width: 180px;
+    margin-top: 6px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+    .nav .img {
+        margin-top: -70px;
+        width: 220px;
+    }
+
+#manage-veterinarian {
+    margin-left: 260px;
+}
+
+.nav .img:hover {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+}
+.nav .img:active {
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
+}
+
+/*LOGO*/
+
+div#logo {
+    text-align: center;
+    padding: 10px;
+}
+
+.logo {
+    width: 650px;
+}
+
+/*Edit/Create/ Styles*/
+
+div#edit-content, #create-content, #details-content, #delete-content {
+    padding: 30px;
+    margin: 30px;
+    border: solid 1px #000;
+    border-radius: 10px;
+    background: url('../Content/Images/content-bg.jpg') repeat;
+    padding-top: 0;
+}
+
+.light-table-filter {
+    padding: 8px;
+    width: 240px;    
+}
+

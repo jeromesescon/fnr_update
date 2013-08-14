@@ -1,0 +1,73 @@
+﻿body {
+
+}
+
+.backbtn img  {
+    text-decoration: none;
+    padding-right: 10px;
+    margin-left: 2px;    
+}
+
+.addbtn img {
+    margin-left: -10px;
+}
+
+.backlistbtn img {
+    position: absolute;
+}
+
+
+.addbutton {
+    width: 48px;
+    margin-right: 5px;
+}
+
+.backbtn img, .addbtn img, .backlistbtn img, .addbutton {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+  
+.backbtn img:active, .addbtn img:active, .backlistbtn img:active, .addbutton:active  {
+    text-decoration: none;
+    -webkit-transform: scale(0.90);
+    -moz-transform: scale(0.90);
+    }
+
+.added-products {
+    border-radius: 10px;
+    border: solid 1px black;
+    background-color: white;
+    padding: 20px;
+}
+
+.added-products table {
+    width: 100%;
+}
+
+.fieldset-container {
+}
+
+div .list-container {
+    background-image: linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+    background-image: -o-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+    background-image: -moz-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+    background-image: -webkit-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+    background-image: -ms-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+
+    background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, rgb(245,245,245)),
+	    color-stop(0.69, rgb(102,190,237))
+);
+    border: 1px solid #777;
+    -webkit-box-shadow: 0px 0px 14px #222;
+}
+
+div .list-container .header-image {
+    text-align: center;    
+}

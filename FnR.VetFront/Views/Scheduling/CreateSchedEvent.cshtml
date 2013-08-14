@@ -1,0 +1,100 @@
+﻿@using FnR.Models
+
+@{
+    ViewBag.Title = "CreateSchedEvent";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+<div class="fieldset-container">
+    <fieldset>
+        <legend>Create Interval Event</legend>
+        @using (Html.BeginForm("CreateSchedEvent", "Scheduling", FormMethod.Post))
+        {
+            <div>
+                <label for="DoctorId">Doctor in Charge</label>
+                <select id="DoctorId" name="DoctorId">
+                    @foreach (var doctor in (List<Doctor>)ViewBag.Doctors)
+                    {
+                        <option value="@doctor.Id">@doctor.Name</option>
+                    }
+                </select>
+            </div>
+            <div>
+                <label for="Title">Title: </label>
+                <input type="text" id="Title" name="Title" value=""/>
+            </div>
+            <div>
+                <label for="duration">Duration (minutes): </label>
+                <input type="number" id="duration" name="duration" value="60"/>
+            </div>
+            <div>
+                <label for="startDate">Start Date / Time: </label>
+                <input type="datetime" id="startDate" name="startDate" value="@DateTime.Now.ToString()"/>
+            </div>
+            <div>
+                <label for="numIntervals">Number of Intervals: </label>
+                <input type="number" id="numIntervals" name="numIntervals" value="1" />
+            </div>
+            <div>
+                <label for="intervalType">Repeate Every: </label>
+                <select id="intervalType" name="intervalType">
+                    <option value="min">Minute</option>
+                    <option value="hour">Hour</option>
+                    <option value="day">Day</option>
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                </select>
+            </div>
+            <div>
+                <label for="UserId">Assign To: </label>
+                <select id="UserId" name="UserId">
+                    @foreach (var user in ViewBag.UserList as List<User>)
+                    {
+                        //if (((Schedule)ViewBag.Schedule).Users.SingleOrDefault(r => r.Id == user.Id) == null)
+                        //{
+                        <option value="@user.Id">@user.FullName</option>
+                        @*}*@
+                    }
+                </select>
+            </div>
+            <div style="clear: both;">
+                <input type="submit" value="Create Interval" />
+            </div>
+        }
+    </fieldset>
+    <fieldset>
+        <legend>Interval Events</legend>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Interval Title</th>
+                    <th>Start Date / Time</th>
+                    <th>End Date / Time</th>
+                    @*<th>Actions</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in ((List<User>)ViewBag.UserList))
+                {
+                    foreach (var schedule in user.Schedules.Where(r => r.Name.ToLower().Contains("interval schedules")))
+                    {
+                        foreach (var schedEvent in schedule.Events.OrderBy(r => r.StartDateTime))
+                        {
+                            <tr>
+                                <td>@user.FullName</td>
+                                <td>@schedEvent.Title</td>
+                                <td>@schedEvent.StartDateTime.ToShortDateString() - @schedEvent.StartDateTime.ToLongTimeString()</td>
+                                <td>@schedEvent.EndDateTime.ToShortDateString() - @schedEvent.EndDateTime.ToLongTimeString()</td>
+                                @*<td>
+                                    @Html.ActionLink("Remove", "DeleteEvent", "Scheduling", new { id = schedEvent.Id, redirectIndex = true  }, null)
+                                </td>*@
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </fieldset>
+    @Html.ActionLink("<< Back to Schedules", "Index", "Scheduling")
+</div>

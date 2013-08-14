@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C77A9E9B-816A-49A5-91C9-25B0B1BA8442}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FnR.Databases</RootNamespace>
+    <AssemblyName>FnR.Databases</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <BuildPackage>true</BuildPackage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FnRDbContext.cs" />
+    <Compile Include="FnRDbContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FnRDbContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306100810490_InitialDatabaseState.cs" />
+    <Compile Include="Migrations\201306100810490_InitialDatabaseState.Designer.cs">
+      <DependentUpon>201306100810490_InitialDatabaseState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306100824162_AddedUserRole.cs" />
+    <Compile Include="Migrations\201306100824162_AddedUserRole.Designer.cs">
+      <DependentUpon>201306100824162_AddedUserRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306120419471_AddUserStatus.cs" />
+    <Compile Include="Migrations\201306120419471_AddUserStatus.Designer.cs">
+      <DependentUpon>201306120419471_AddUserStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306121318157_AddVetUsernamePassword.cs" />
+    <Compile Include="Migrations\201306121318157_AddVetUsernamePassword.Designer.cs">
+      <DependentUpon>201306121318157_AddVetUsernamePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306122057381_UpdatedSubscription.cs" />
+    <Compile Include="Migrations\201306122057381_UpdatedSubscription.Designer.cs">
+      <DependentUpon>201306122057381_UpdatedSubscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306122120463_UpdatedVets.cs" />
+    <Compile Include="Migrations\201306122120463_UpdatedVets.Designer.cs">
+      <DependentUpon>201306122120463_UpdatedVets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306122124177_UpdatedVets1.cs" />
+    <Compile Include="Migrations\201306122124177_UpdatedVets1.Designer.cs">
+      <DependentUpon>201306122124177_UpdatedVets1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306140023305_AddedNotNullValuesInSubscription.cs" />
+    <Compile Include="Migrations\201306140023305_AddedNotNullValuesInSubscription.Designer.cs">
+      <DependentUpon>201306140023305_AddedNotNullValuesInSubscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306170249265_LinkedVetAndOwners.cs" />
+    <Compile Include="Migrations\201306170249265_LinkedVetAndOwners.Designer.cs">
+      <DependentUpon>201306170249265_LinkedVetAndOwners.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306200954583_AddedConditions.cs" />
+    <Compile Include="Migrations\201306200954583_AddedConditions.Designer.cs">
+      <DependentUpon>201306200954583_AddedConditions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306210127120_AddedStatusOnDelivery.cs" />
+    <Compile Include="Migrations\201306210127120_AddedStatusOnDelivery.Designer.cs">
+      <DependentUpon>201306210127120_AddedStatusOnDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306240508258_AddedProductVets.cs" />
+    <Compile Include="Migrations\201306240508258_AddedProductVets.Designer.cs">
+      <DependentUpon>201306240508258_AddedProductVets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307040458466_AddedBillingIds.cs" />
+    <Compile Include="Migrations\201307040458466_AddedBillingIds.Designer.cs">
+      <DependentUpon>201307040458466_AddedBillingIds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307060918446_FinalConditionSetup.cs" />
+    <Compile Include="Migrations\201307060918446_FinalConditionSetup.Designer.cs">
+      <DependentUpon>201307060918446_FinalConditionSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307060929367_PetToConditionRelation.cs" />
+    <Compile Include="Migrations\201307060929367_PetToConditionRelation.Designer.cs">
+      <DependentUpon>201307060929367_PetToConditionRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307072156207_UnsibscribeEway.cs" />
+    <Compile Include="Migrations\201307072156207_UnsibscribeEway.Designer.cs">
+      <DependentUpon>201307072156207_UnsibscribeEway.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307080618592_AddedSchedules.cs" />
+    <Compile Include="Migrations\201307080618592_AddedSchedules.Designer.cs">
+      <DependentUpon>201307080618592_AddedSchedules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307081300123_AddUserSchedules.cs" />
+    <Compile Include="Migrations\201307081300123_AddUserSchedules.Designer.cs">
+      <DependentUpon>201307081300123_AddUserSchedules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307081416509_AddedEventSchedule.cs" />
+    <Compile Include="Migrations\201307081416509_AddedEventSchedule.Designer.cs">
+      <DependentUpon>201307081416509_AddedEventSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307190111521_AddedDoctors.cs" />
+    <Compile Include="Migrations\201307190111521_AddedDoctors.Designer.cs">
+      <DependentUpon>201307190111521_AddedDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307190218077_ScheduleReorganization.cs" />
+    <Compile Include="Migrations\201307190218077_ScheduleReorganization.Designer.cs">
+      <DependentUpon>201307190218077_ScheduleReorganization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307190221279_TempRelationshipFix.cs" />
+    <Compile Include="Migrations\201307190221279_TempRelationshipFix.Designer.cs">
+      <DependentUpon>201307190221279_TempRelationshipFix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201307190223094_MadeDoctorsRequiredInSchedules.cs" />
+    <Compile Include="Migrations\201307190223094_MadeDoctorsRequiredInSchedules.Designer.cs">
+      <DependentUpon>201307190223094_MadeDoctorsRequiredInSchedules.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201308141110223_AddDoctorAppointment.cs" />
+    <Compile Include="Migrations\201308141110223_AddDoctorAppointment.Designer.cs">
+      <DependentUpon>201308141110223_AddDoctorAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="FnRDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FnRDbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FnR.Models\FnR.Models.csproj">
+      <Project>{663F3D65-3EF2-4122-B020-940233A4FE35}</Project>
+      <Name>FnR.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201306100810490_InitialDatabaseState.resx">
+      <DependentUpon>201306100810490_InitialDatabaseState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306100824162_AddedUserRole.resx">
+      <DependentUpon>201306100824162_AddedUserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306120419471_AddUserStatus.resx">
+      <DependentUpon>201306120419471_AddUserStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306121318157_AddVetUsernamePassword.resx">
+      <DependentUpon>201306121318157_AddVetUsernamePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306122057381_UpdatedSubscription.resx">
+      <DependentUpon>201306122057381_UpdatedSubscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306122120463_UpdatedVets.resx">
+      <DependentUpon>201306122120463_UpdatedVets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306122124177_UpdatedVets1.resx">
+      <DependentUpon>201306122124177_UpdatedVets1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306140023305_AddedNotNullValuesInSubscription.resx">
+      <DependentUpon>201306140023305_AddedNotNullValuesInSubscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306170249265_LinkedVetAndOwners.resx">
+      <DependentUpon>201306170249265_LinkedVetAndOwners.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306200954583_AddedConditions.resx">
+      <DependentUpon>201306200954583_AddedConditions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306210127120_AddedStatusOnDelivery.resx">
+      <DependentUpon>201306210127120_AddedStatusOnDelivery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306240508258_AddedProductVets.resx">
+      <DependentUpon>201306240508258_AddedProductVets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307040458466_AddedBillingIds.resx">
+      <DependentUpon>201307040458466_AddedBillingIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307060918446_FinalConditionSetup.resx">
+      <DependentUpon>201307060918446_FinalConditionSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307060929367_PetToConditionRelation.resx">
+      <DependentUpon>201307060929367_PetToConditionRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307072156207_UnsibscribeEway.resx">
+      <DependentUpon>201307072156207_UnsibscribeEway.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307080618592_AddedSchedules.resx">
+      <DependentUpon>201307080618592_AddedSchedules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307081300123_AddUserSchedules.resx">
+      <DependentUpon>201307081300123_AddUserSchedules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307081416509_AddedEventSchedule.resx">
+      <DependentUpon>201307081416509_AddedEventSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307190111521_AddedDoctors.resx">
+      <DependentUpon>201307190111521_AddedDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307190218077_ScheduleReorganization.resx">
+      <DependentUpon>201307190218077_ScheduleReorganization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307190221279_TempRelationshipFix.resx">
+      <DependentUpon>201307190221279_TempRelationshipFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307190223094_MadeDoctorsRequiredInSchedules.resx">
+      <DependentUpon>201307190223094_MadeDoctorsRequiredInSchedules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201308141110223_AddDoctorAppointment.resx">
+      <DependentUpon>201308141110223_AddDoctorAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FnRDbContext.edmx.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

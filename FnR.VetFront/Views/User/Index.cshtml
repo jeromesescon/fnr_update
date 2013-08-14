@@ -1,0 +1,115 @@
+﻿@using FnR.Databases
+@using FnR.Repositories
+@model IEnumerable<FnR.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+    var _userRepo = new UserRepository(new FnRDbContext());
+}
+
+@section styles{
+    <link href="~/Content/MyStyles/user.css" rel="stylesheet" />
+}
+
+
+<div id="registerUser-content">
+
+    <div id="logo">
+        <img class="logo" src="~/Content/Images/registered-users-logo.png" />
+    </div>
+
+    <div class="create-button">
+        <a href="@Url.Action("Create")">Create New</a>
+    </div>
+    <input type="search" class="light-table-filter" data-table="filtered-table" placeholder="search registered user here..." autofocus />
+    <table id="sortedTable" class="tablesorter filtered-table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    eWay Rebill Number
+                </th>
+                <th>Vet
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RebillCustomerID)
+                    </td>
+                    <td>
+                        @*@_userRepo.GetVet(item.Id)*@
+                        @Html.DisplayFor(modelItem => item.Vet.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div id="pager" class="pager">
+        <form>
+            <img class="first" src="./Content/first.png" />
+            <img class="prev" src="./Content/prev.png" />
+            <input class="pagedisplay" type="text" />
+            <img class="next" src="./Content/next.png" />
+            <img class="last" src="./Content/last.png" />
+            <select class="pagesize">
+                <option selected="selected" value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+            </select>
+        </form>
+    </div>
+</div>

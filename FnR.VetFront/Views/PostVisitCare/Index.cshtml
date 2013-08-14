@@ -1,0 +1,93 @@
+﻿@using FnR.Models
+@model FnR.Models.Vet
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+@section styles
+{
+    <link href="~/Content/MyStyles/postvisitcare.css" rel="stylesheet" />
+}
+
+@section scripts
+{
+    <script src="~/Scripts/MyScripts/postvisitcare.js"></script>
+}
+
+<input type="hidden" id="post-visit-home-url" value="@Url.Action("Index", "PostVisitCare")"/>
+<input type="hidden" id="add-condition-url" value="@Url.Action("AddCondition", "PostVisitCare")"/>
+<input type="hidden" id="edit-condition-url" value="@Url.Action("EditCondition", "PostVisitCare")"/>
+<input type="hidden" id="delete-condition-url" value="@Url.Action("DeleteCondition", "PostVisitCare")"/>
+
+<input type="hidden" id="getuserpets-url" value="@Url.Action("GetUserPets", "PostVisitCare")"/>
+<input type="hidden" id="getpetconditions-url" value="@Url.Action("GetPetConditions", "PostVisitCare")"/>
+<input type="hidden" id="addpetcondition-url" value="@Url.Action("AddPetCondition", "PostVisitCare")"/>
+<input type="hidden" id="removepetcondition-url" value="@Url.Action("RemovePetCondition", "PostVisitCare")"/>
+<input type="hidden" id="vet-id" value="@Model.Id"/>
+<div id="far-logo">
+    <a href="@Url.Action("Index", "Home")">
+        <img src="~/Content/Images/farlogo.png" /></a>
+</div>
+<div id="main-container">
+
+    <div class="container">
+        <img class="logo" src="~/Content/Images/post-logo.png" />
+        <h4>Welcome (<span class="emphasis">@Model.Name</span>)</h4>
+    </div>
+    <div id="condition-management">
+        <h3>Condition Management</h3>
+        <label>Available Conditions: </label>
+        <select id="condition-list">
+            <option value="0" selected="selected">-- Select Conditions --</option>
+            @foreach (var condition in Model.Conditions)
+            {
+                <option value="@condition.Id">@condition.Name</option>
+            }
+        </select>
+        <input type="button" id="edit-condition-button" value="Edit Condition >>" />
+        <input type="button" id="delete-condition-button" value="- Delete Condition" />
+        <input type="button" id="add-condition-button" value="+ Add Condition" />
+    </div>
+
+    <div class="selected-pet">
+        <h3>Pet Conditions</h3>
+        <ul id="added-pet-conditions"></ul>
+    </div>
+
+    <div id="condition-assignment">
+        <h3>User Condition Assignment</h3>
+        <div class="dropdown-list">
+            <div class="condition-list-assignment">
+                <label>Find Users:</label>
+                <select id="user-list" selected="selected">
+                    <option value="0">-- Find User --</option>
+                    @foreach (var user in (List<User>)ViewBag.UserList)
+                    {
+                        <option value="@user.Id">@user.FullName</option>
+                    }
+                </select>
+            </div>
+
+            <div class="condition-list-assignment">
+                <label>Find Pet:</label>
+                <select id="pet-list" selected="selected">
+                    <option value="0">-- Find Pet --</option>
+                </select>
+            </div>
+
+            <div class="condition-list-assignment">
+                <label>Find Condition:</label>
+                <select id="pet-condition-list">
+                    <option value="0" selected="selected">-- Find Conditions --</option>
+                    @foreach (var condition in Model.Conditions)
+                    {
+                        <option value="@condition.Id">@condition.Name</option>
+                    }
+                </select>
+                <input type="button" id="add-pet-condition" value="Add Condition" />
+            </div>
+        </div>
+    </div>
+</div>

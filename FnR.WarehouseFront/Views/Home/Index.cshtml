@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_WarehouseLayout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/MyStyles/style.css" rel="stylesheet" />    
+}
+
+<div id="warehouse-logo">
+    <a href="@Url.Action("Index", "Home")">
+        <img src="~/Content/Images/header-warehouse.png" />
+    </a>
+</div>
+
+<div class="dashboard">
+    <a class="nav" href="@Url.Action("Index", "Product")">
+        <img class="img" src="~/Content/Images/manage-products.png" /><img src="~/Content/Images/manage-products-icon.png" /></a>
+    <a class="nav" href="@Url.Action("Index", "Delivery")">
+        <img class="img" src="~/Content/Images/manage-delivery.png" /><img src="~/Content/Images/manage-delivery-icon.png" /></a>
+</div>

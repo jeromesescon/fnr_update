@@ -1,0 +1,33 @@
+﻿@model FnR.Models.Vet
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+
+@section styles{
+    <link href="~/Content/MyStyles/home.css" rel="stylesheet" />
+}
+
+<div class="dashboard">
+    <h2>Welcome to (<span class="emphasis">@Model.Name</span>) Vet Manager</h2>
+    <div class="nav-container">
+        <a href="@Url.Action("Index", "PostVisitCare")" class="nav">
+            <img class="img" src="~/Content/Images/manage-vets.png" /><p>Post Visit Care</p></a>
+        <a href="@Url.Action("Index", "Product")" class="nav">
+            <img class="img" src="~/Content/Images/manage-products-drugs.png" /><p>Manage Product / Drugs</p></a>
+        <a href="@Url.Action("Index", "Subscription")" class="nav">
+            <img class="img" src="~/Content/Images/manage-subscriptions.png" /><p>Manage Subscriptions</p></a>
+        <a href="@Url.Action("Index", "Income")" class="nav">
+            <img class="img" src="~/Content/Images/manage-income.png" /><p>Manage Income</p></a>
+        <a href="@Url.Action("Index", "Scheduling")" class="nav">
+            <img class="img" src="~/Content/Images/manage-vets.png" /><p>Manage Schedules</p></a>
+        <a href="@Url.Action("Index", "Doctors")" class="nav">
+            <img class="img" src="~/Content/Images/manage-vets.png" /><p>Manage Doctors</p></a>
+        <a href="@Url.Action("Index", "User")" class="nav">
+            <img class="img" src="~/Content/Images/manage-users.png" /><p>Manage Users</p></a>
+        <a href="@Url.Action("Index", "DoctorAppointmentStatus")" class="nav">
+            <img class="img" src="~/Content/Images/manage-vets.png" /><p>Manage Doctor Appointment Status</p></a>
+    </div>
+</div>

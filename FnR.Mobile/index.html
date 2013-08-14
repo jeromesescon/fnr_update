@@ -1,0 +1,455 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>My Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- JQUERY MOBILE STYLES -->
+    <link href="~/../Content/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/../Content/themes/base/minified/jquery.ui.datepicker.min.css" rel="stylesheet" />
+    <link href="~/../Content/jquery.mobile-1.3.0.min.css" rel="stylesheet" />
+    <link href="~/../Content/fullcalendar.css" rel="stylesheet" />
+    <link href="~/../Content/collapsible.css" rel="stylesheet" />
+    <!-- MY STYLES -->
+    <link href="~/../Content/MyStyles/index.css" rel="stylesheet" />
+    <!-- JQUERY SCRIPTS -->
+    <script src="~/../Scripts/jquery-2.0.0.min.js"></script>
+    <script src="~/../Scripts/jquery-ui-1.10.3.min.js"></script>
+    <script src="~/../Scripts/jquery.session.js"></script>
+    <script src="~/../Scripts/fullcalendar.js"></script>
+     <script src="~/../Scripts/date.format.js"></script>
+
+    <!--<script src="Scripts/jquery.validate.min.js"></script>-->
+    <!-- MY CUSTOM SCRIPTS -->
+    <script src="~/../Scripts/MyScripts/helpers.js"></script>
+    <script src="~/../Scripts/MyScripts/index.js"></script>
+    <!-- JQUERY MOBILE SCRIPT SHOULD BE PLACED AT THE END -->
+    <script src="~/../Scripts/jquery.mobile-1.3.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //syntax highlighter
+            //hljs.tabReplace = '    ';
+            //hljs.initHighlightingOnLoad();
+
+            $.fn.slideFadeToggle = function (speed, easing, callback) {
+                return this.animate({ opacity: 'toggle', height: 'toggle' }, speed, easing, callback);
+            };
+
+            $('#body-section1').click(function () {
+                //$('#body-section1').removeClass('collapse-close').addClass('collapse-open')
+                //$('#pet-info').css("display", "block");
+                $('#pet-info').animate({
+                    height: "toggle",
+                    opacity: "toggle"
+                }, 300);
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <input type="hidden" id="api-url" value="http://localhost:100/api/felixandrover" />
+    <!--<input type="hidden" id="api-url" value="http://localhost:22777" />-->
+    <!--<input type="hidden" id="api-url" value="http://localhost:24753/services/api/felixandrover" />-->
+    <!--<input type="hidden" id="api-url" value="http://appnyxservices.com/felixandrover/services/api/felixandrover" />-->
+    <!--<input type="hidden" id="api-url" value="http://www.appnyxservices.com/fnr2/fnrWebAPI/api/felixandrover" />-->
+  
+    <input type="hidden" id="user-id" value="" />
+
+    <!---------------------------------- MAIN PAGE ----------------------------------------->
+    <div id="main" data-role="page">
+        <div data-role="header" data-position="fixed" data-theme="c" data-tap-toggle="false">
+            <a id="login-button" class="authorized" href="#login" data-role="button" data-theme="c" data-icon="forward">Login</a>
+            <a id="logout-button" class="unauthorized" href="#" data-role="button" data-theme="c" data-icon="back">Logout</a>
+            <!--<img id="menu-button" src="Content/Images/chrome1.png" class="ui-btn-right unauthorized" data-role="button" data-theme="c" />-->
+            <!--<a id="menu-button" href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>-->
+            <h1>
+                <img src="Content/Images/farlogo.png" />
+                <span class="display-name">Welcome to (<span class="vetname">no vet</span>)<br />
+                    <span class="name">Guest</span></span>
+            </h1>
+        </div>
+        <!-- /header -->
+
+        <div data-role="content">
+            <div class="authorized">
+                <h1>Welcome To Felix And Rover</h1>
+                <p>Please <a href="#login">Login</a> or <a href="#register">Register</a> to be able to sebscribe your pet to our products.</p>
+            </div>
+            <div class="unauthorized">
+                <div id="no-pets">
+                    <h3>No Existing Pets Please Click Below to Add Pets</h3>
+                    <a data-theme="a" href="#add-pets" data-role="button">Add Pets</a>
+                </div>
+
+
+
+                <div id="pet-product-info">
+                    <label style="font-weight: bold; margin-top: 15px;" for="user-pet">Select Pet:</label>
+                    <div class="select-container">
+                        <select name="user-pet" id="user-pet">
+                        </select>
+                        <!--JEROME-->
+                        <!--<a data-theme="a" style="margin-top: 20px; margin-bottom: 20px;" href="#add-pets" data-role="button">Add Pets</a>-->
+                    </div>
+
+                    <fieldset data-role="fieldset">
+                        <legend data-role="legend" class='petinfo'>
+                            <img id="petinfo-button" style="margin-bottom: 3px; margin-right:10px;" src="Content/images/icons-18-white.png" class="ui-icon ui-icon-plus ui-icon-shadow ui-btn-right" data-role="button" data-theme="c" />
+                            My pet information
+                        </legend>
+                        <div class="display">
+                            <span class="label">Birthday:</span>
+                            <span class="info" id="info-birthday"></span>
+                        </div>
+                        <div class="display">
+                            <span class="label">Type:</span>
+                            <span class="info" id="info-type"></span>
+                        </div>
+                        <div class="display">
+                            <span class="label">Breed:</span>
+                            <span class="info" id="info-breed"></span>
+                        </div>
+                        <div class="display">
+                            <span class="label">Weight: </span>
+                            <span class="info" id="info-weight"></span>
+                        </div>
+                    </fieldset>
+                    <fieldset data-role="fieldset">
+                        <legend data-role="legend" class="prodsuggest">
+                            <img id="prodsuggest-button" style="margin-bottom: 3px; margin-right:10px;" src="Content/images/icons-18-white.png" class="ui-icon ui-icon-plus ui-icon-shadow ui-btn-right" data-role="button" data-theme="c" />
+                            My pet drugs
+                        </legend>
+                        <div class="display">
+                            <!--<span class="info" id="info-productname"></span>-->
+                            <div class="select-container">
+                                <div style="font-weight: bold;">Product Name: </div>
+                                <select id="info-productname">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="display">
+                            <span class="label">Product Description:</span>
+                            <span class="info" id="info-description"></span>
+                        </div>
+                        <div class="display">
+                            <span class="label">Price:</span>
+                            <span class="info" id="info-price"></span>
+                        </div>
+                        <a href="#" id="subscribe-button" data-role="button" data-theme="a">Subscribe</a>
+                        <!--<a href="#subscriptions" id="view-subscriptions" data-role="button" data-theme="a">View Subscriptions</a>-->
+                    </fieldset>
+                    <fieldset data-role="fieldset">
+                        <legend data-role="legend" class="sched">
+                            <img id="sched-button" style="margin-bottom: 3px; margin-right:10px;" src="Content/images/icons-18-white.png" class="ui-icon ui-icon-plus ui-icon-shadow ui-btn-right" data-role="button" data-theme="c" />
+                            My pet schedule
+                        </legend>
+                        <div id="schedule-calendar-section"></div>
+                    </fieldset>
+                    <fieldset data-role="fieldset">
+                        <legend data-role="legend" class="postvisit">
+                            <img id="postvisit-button" style="margin-bottom: 3px; margin-right:10px;" src="Content/images/icons-18-white.png" class="ui-icon ui-icon-plus ui-icon-shadow ui-btn-right" data-role="button" data-theme="c" />
+                            My pet care information
+                        </legend>
+                        <label for="postvisit-conditionlist-section">Select Condition</label>
+                        <select name="postvisit-conditionlist-section" id="postvisit-conditionlist-section"></select>
+                        <br />
+                        <label for="condition-description-section">Condition Description / Steps</label>
+                        <div id="condition-description-section"></div>
+                    </fieldset>
+                    
+                    <fieldset data-role="fieldset">
+                        <legend data-role="legend" class="appointmentstatus">
+                            <img id="appointmentstatus-button" style="margin-bottom: 3px; margin-right:10px;" src="Content/images/icons-18-white.png" class="ui-icon ui-icon-plus ui-icon-shadow ui-btn-right" data-role="button" data-theme="c" />
+                            My doctor's appointment status
+                        </legend>
+                        <div id="appointmentstatus-waittime"></div>
+                    </fieldset>
+
+                    <fieldset data-role="fieldset">
+                        <legend data-role="legend" class="settings">
+                            <img id="settings-button" style="margin-bottom: 3px; margin-right:10px;" src="Content/images/icons-18-white.png" class="ui-icon ui-icon-plus ui-icon-shadow ui-btn-right" data-role="button" data-theme="c" />
+                            My Settings
+                        </legend>
+                        <div class="select-container">
+                            <a data-theme="a" style="margin-top: 20px; margin-bottom: 20px;" href="#add-pets" data-role="button">Add Pets</a>
+                            <a data-theme="a" style="margin-top: 20px; margin-bottom: 20px;" href="#subscriptions" data-role="button">Manage Subscription</a>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <!-- /content -->
+    </div>
+    <!-- /page -->
+
+    <!-- menu -->
+    <!-- COMMETNTED FOR NOW. WILL RE-USE IT LATER -->
+    <!-- <div data-role="panel" data-position="right" data-position-fixed="false" data-display="overlay" id="nav-panel" data-theme="a" class="ui-panel ui-panel-position-right ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-closed" style="height: 15%;">
+
+        <div class="ui-panel-inner">
+            <ul data-role="listview" data-theme="a" data-divider-theme="a" class="nav-search ui-listview">
+                <li data-filtertext="wai-aria voiceover accessibility screen reader" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-last-child ui-btn-up-a">
+                    <div class="ui-btn-inner ui-li">
+                        <div class="ui-btn-text">
+                            <a class="ui-link-inherit" href="#add-pets">Add Pets</a>
+                        </div>
+
+                    </div>
+                </li>
+                <li data-filtertext="wai-aria voiceover accessibility screen reader" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-last-child ui-btn-up-a">
+                    <div class="ui-btn-inner ui-li">
+                        <div class="ui-btn-text">
+                            <a href="#subscriptions" class="ui-link-inherit">Manage Subscription</a>
+                        </div>
+
+                    </div>
+                </li>
+                <li data-icon="delete" style="background-color: #111;" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-first-child ui-btn-up-a">
+                    <div class="ui-btn-inner ui-li">
+                        <div class="ui-btn-text">
+                            <a href="#" id="menu-close" data-rel="close" class="ui-link-inherit">Close Menu</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>-->
+
+    <!-- /menu -->
+
+    <div data-role="page" id="subscriptions">
+        <div data-role="header" data-position="fixed" data-theme="c" data-tap-toggle="false">
+            <a href="#main" data-role="button" data-icon="back">Back</a>
+            <h1>User Subscriptions</h1>
+        </div>
+        <div data-role="content">
+            <div id="user-subscriptions"></div>
+        </div>
+    </div>
+
+    <!------------- POST VISIT ---------------->
+    <div data-role="page" id="post-visit">
+        <div data-role="header" data-position="fixed" data-theme="c" data-tap-toggle="false">
+            <a href="#main" data-role="button" data-icon="back">Back</a>
+            <h1>Post Visit Care</h1>
+        </div>
+        <div data-role="content">
+            <div id="user-postvisit">
+                <fieldset data-role="fieldset">
+                    <legend>Pet Conditions</legend>
+                    <label for="postvisit-petlist">Select Pet</label>
+                    <select name="postvisit-petlist" id="postvisit-petlist"></select>
+                    <label for="postvisit-conditionlist">Select Condition</label>
+                    <select name="postvisit-conditionlist" id="postvisit-conditionlist"></select>
+                    <br />
+                    <label for="condition-description">Condition Description / Steps</label>
+                    <div id="condition-description"></div>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+
+    <!------------- SHEDULE ---------------->
+    <div data-role="page" id="sched">
+        <div data-role="header" data-position="fixed" data-theme="c" data-tap-toggle="false">
+            <a href="#main" data-role="button" data-icon="back">Back</a>
+            <h1>Scheduling</h1>
+        </div>
+        <div data-role="content">
+            <div id="user-sched">
+                <div id="schedule-calendar"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--------------------------------- ADD PETS DIALOG  --------------------------------->
+    <div id="add-pets" data-role="dialog">
+        <div data-role="header">
+            <h1>Add Pets</h1>
+        </div>
+        <div data-role="content" id="add-pets-content">
+            <form id="add-pet-form" action="#" method="POST">
+                <input type="hidden" name="PetBreedId" id="PetBreedId" value="" />
+                <input type="hidden" id="UserId" name="UserId" value="" />
+                <fieldset>
+                    <legend>Pet Information</legend>
+                    <label for="Name">Pet Name:</label>
+                    <input name="Name" id="Name" type="text" required />
+                    <label for="PetTypeId">Pet Type:</label>
+                    <select id="PetTypeId" name="BreedId"></select>
+                    <label for="breed-id">Pet Breed:</label>
+                    <select id="breed-id"></select>
+                    <label for="Birthday">Birthday:</label>
+                    <input name="Birthday" id="Birthday" type="date" pattern="^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$" required />
+                    <label for="Weight">Weight (Kg):</label>
+                    <input name="Weight" id="Weight" type="text" pattern="[-+]?[0-9]*\.?[0-9]+" required />
+                </fieldset>
+                <input data-theme="b" type="submit" value="Create Pet" />
+            </form>
+        </div>
+    </div>
+
+
+    <!---------------------------------- FORGOT PASSWORD DIALOG PAGE ---------------------------------->
+    <div id="forgot_password" data-role="dialog">
+        <div data-role="header" data-position="fixed">
+            <h1>User Email</h1>
+        </div>
+        <!-- /header -->
+
+        <div data-role="content" class="forgot-password-page">
+            <form action="" id="email-form" method="POST">
+                <fieldset data-role="fieldset" class="forgot-fieldset">
+                    <legend data-role="legend">Please enter your email</legend>
+                    <label for="loginUsername">Email:</label>
+                    <input name="userEmail" id="userEmail" type="text" required placeholder="Email Address" />
+                    <input type="submit" value="Send" data-inline="false" data-theme="a" data-mini="true" />
+                </fieldset>
+            </form>
+        </div>
+        <!-- /content -->
+    </div>
+    <!-- /page -->
+
+    <!---------------------------------- LOGIN DIALOG PAGE ---------------------------------->
+    <div id="login" data-role="dialog">
+        <div data-role="header" data-position="fixed">
+            <h1>User Authorization</h1>
+        </div>
+        <!-- /header -->
+
+        <div data-role="content" class="login-page">
+            <form action="" id="login-form" method="POST">
+                <fieldset data-role="fieldset" class="login-fieldset">
+                    <legend data-role="legend"></legend>
+                    <p>LOGIN</p>
+                    <label for="loginUsername">Username:</label>
+                    <input name="loginUsername" id="loginUsername" type="text" required placeholder="Username" />
+                    <label for="loginPassword">Password:</label>
+                    <input name="loginPassword" id="loginPassword" type="password" required placeholder="Password" />
+                    <div class="login-bottom">
+                        <input type="submit" value="Login" data-inline="false" data-theme="a" />
+                        <a data-theme="a" data-role="button" href="#register" data-inline="false" data-transition="flip">Register</a>
+                        <a href="#forgot_password" data-transition="pop">
+                            <h4>Forgot Password?</h4>
+                        </a>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <!-- /content -->
+    </div>
+    <!-- /page -->
+
+    <div id="card-details" data-role="dialog">
+        <div data-role="header" data-theme="b">
+            <h1>Credit Details</h1>
+        </div>
+        <div data-role="content">
+            <form id="card-details-form" action="" method="POST">
+                <fieldset data-role="fieldset" class="register-fieldset">
+                    <legend data-role="legend">Credit Card Information</legend>
+                    <label for="NameOnCard">Name On Card:</label>
+                    <input name="NameOnCard" id="NameOnCard" type="text" required />
+                    <label for="CCNumber">Credit Card Number:</label>
+                    <input name="CCNumber" id="CCNumber" type="text" required />
+                    <label for="CCExpMonth">Expiration Month (mm):</label>
+                    <input name="CCExpMonth" id="CCExpMonth" type="text" required />
+                    <label for="CCExpYear">Expiration Year (yy or yyyy):</label>
+                    <input name="CCExpYear" id="CCExpYear" type="text" required />
+                </fieldset>
+                <input type="submit" value="Subscribe" />
+            </form>
+        </div>
+    </div>
+
+
+    <!---------------------------------- REGISTER DIALOG PAGE ---------------------------------->
+    <div id="register" data-role="page">
+        <div data-role="header" data-theme="c">
+            <h1>
+                <img src="Content/Images/farlogo.png" />
+                <p>User Registration</p>
+            </h1>
+        </div>
+        <!-- /header -->
+        <div data-role="content" class="registration-page">
+            <form id="register-form" action="" method="POST">
+                <fieldset data-role="fieldset" class="register-fieldset">
+                    <legend data-role="legend">Login Information</legend>
+                    <label for="Username">Username:</label>
+                    <input name="Username" id="Username" type="text" required />
+                    <label for="Password">Password:</label>
+                    <input name="Password" id="Password" type="password" required />
+                </fieldset>
+                <fieldset data-role="fieldset" class="register-fieldset">
+                    <legend data-role="legend">User Information</legend>
+                    <label for="FirstName">First Name:</label>
+                    <input name="FirstName" id="FirstName" type="text" required />
+                    <label for="LastName">Last Name:</label>
+                    <input name="LastName" id="LastName" type="text" required />
+                    <label for="Email">Email Address:</label>
+                    <input name="Email" id="Email" type="email" required />
+                    <label for="PhoneNumber">Phone Number:</label>
+                    <input name="PhoneNumber" id="PhoneNumber" type="text" required />
+                    <label for="Address">Address:</label>
+                    <input name="Address" id="Address" type="text" required />
+                    <input type="hidden" id="VetId" name="VetId" />
+                </fieldset>
+                <!--<fieldset data-role="fieldset" class="register-fieldset">
+                    <legend data-role="legend">Credit Card Information</legend>
+                    <label for="NameOnCard">Name On Card:</label>
+                    <input name="NameOnCard" id="NameOnCard" type="text" required />
+                    <label for="CCNumber">Credit Card Number:</label>
+                    <input name="CCNumber" id="CCNumber" type="text" required />
+                    <label for="CCExpMonth">Expiration Month (mm):</label>
+                    <input name="CCExpMonth" id="CCExpMonth" type="text" required />
+                    <label for="CCExpYear">Expiration Year (yy or yyyy):</label>
+                    <input name="CCExpYear" id="CCExpYear" type="text" required />
+                </fieldset>-->
+                <!--<fieldset data-role="fieldset">
+                        <legend data-role="legend">Add Pets</legend>
+                        <div id="pet-list">
+                            <fieldset data-role="fieldset">
+                                <legend data-role="legend">Pet Information</legend>
+                                <label for="petname">Pet Name:</label>
+                                <input name="petname" id="petname" type="text" required />
+                                <label for="birthday">Birthday:</label>
+                                <input name="birthday" id="birthday" value="mm/dd/yyyy" type="date" pattern="^(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$" required />
+                                <label for="pettype">Pet Type:</label>
+                                <div class="select-container">
+                                    <select name="pettype" id="pettype">
+                                        <option value="select">-- Select Type --</option>
+                                        <option value="dog">Dog</option>
+                                        <option value="cat">Cat</option>
+                                    </select>
+                                </div>
+                                <label for="petbreed">Pet Breed:</label>
+                                <div class="select-container">
+                                    <select name="petbreed" id="petbreed">
+                                        <option value="select">-- Select Breed --</option>
+                                        <option value="Affenpinscher">Affenpinscher</option>
+                                        <option value="Afghan Hound">Afghan Hound</option>
+                                        <option value="Airedale Terrier">Airedale Terrier</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <a href="add-pets.html" id="add-pet" data-role="button" data-theme="a">Add Another Pet</a>
+                    </fieldset>-->
+                <input type="submit" value="Register" data-inline="true" data-theme="c" />
+                <a href="#main" data-role="button" data-transition="slideup" data-theme="c" data-inline="true">Cancel</a>
+            </form>
+        </div>
+        <!-- /content -->
+    </div>
+    <!-- /page -->
+
+
+</body>
+</html>

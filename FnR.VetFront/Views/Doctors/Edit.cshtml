@@ -1,0 +1,46 @@
+﻿@model FnR.Models.Doctor
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+<div class="fieldset-container">
+    <h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Doctor</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VetId, "Vet")
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.VetId)
+            <input type="text" readonly="readonly" id="VetName" value="@Model.Vet.Name"/>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div style="clear: both;">
+            <input type="submit" value="Save" />
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+</div>

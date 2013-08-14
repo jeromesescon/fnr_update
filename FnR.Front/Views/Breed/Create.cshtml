@@ -1,0 +1,54 @@
+﻿@using System.Web.Optimization
+@model FnR.Models.Breed
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_FnRLayout.cshtml";
+}
+
+<h2>Create New Breed</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Breed</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdealWeight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IdealWeight)
+            @Html.ValidationMessageFor(model => model.IdealWeight)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetTypeId, "Pet Type")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PetTypeId", "-- Select Pet Type --")
+            @Html.ValidationMessageFor(model => model.PetTypeId)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

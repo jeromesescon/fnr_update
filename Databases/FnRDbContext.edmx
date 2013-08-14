@@ -1,0 +1,1096 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Runtime>
+    <ConceptualModels>
+      <Schema Namespace="FnR.Databases" Alias="Self" p4:UseStrongSpatialTypes="false" xmlns:p4="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Breed">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <Property Name="IdealWeight" Type="Double" Nullable="false" />
+          <Property Name="PetTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PetType" Relationship="Self.Breed_PetType" FromRole="Breed_PetType_Source" ToRole="Breed_PetType_Target" />
+        </EntityType>
+        <EntityType Name="PetType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Breeds" Relationship="Self.Breed_PetType" FromRole="Breed_PetType_Target" ToRole="Breed_PetType_Source" />
+        </EntityType>
+        <EntityType Name="Pet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <Property Name="BreedId" Type="Int32" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Double" Nullable="true" />
+          <NavigationProperty Name="Breed" Relationship="Self.Pet_Breed" FromRole="Pet_Breed_Source" ToRole="Pet_Breed_Target" />
+          <NavigationProperty Name="User" Relationship="Self.Pet_User" FromRole="Pet_User_Source" ToRole="Pet_User_Target" />
+          <NavigationProperty Name="Conditions" Relationship="Self.Condition_Pets" FromRole="Condition_Pets_Target" ToRole="Condition_Pets_Source" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="PhoneNumber" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="Username" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="Self.Role" Nullable="false" />
+          <Property Name="Status" Type="Self.Status" Nullable="false" />
+          <Property Name="VetId" Type="Int32" Nullable="true" />
+          <Property Name="TokenCustomerID" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="RebillCustomerID" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <NavigationProperty Name="Subscriptions" Relationship="Self.Subscription_User" FromRole="Subscription_User_Target" ToRole="Subscription_User_Source" />
+          <NavigationProperty Name="Pets" Relationship="Self.Pet_User" FromRole="Pet_User_Target" ToRole="Pet_User_Source" />
+          <NavigationProperty Name="Vet" Relationship="Self.User_Vet" FromRole="User_Vet_Source" ToRole="User_Vet_Target" />
+          <NavigationProperty Name="Schedules" Relationship="Self.Schedule_Users" FromRole="Schedule_Users_Target" ToRole="Schedule_Users_Source" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PetId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="VetId" Type="Int32" Nullable="false" />
+          <Property Name="DateSubscribed" Type="DateTime" Nullable="false" />
+          <Property Name="NextDeliveryDate" Type="DateTime" Nullable="false" />
+          <Property Name="Sent" Type="Boolean" Nullable="false" />
+          <Property Name="RebillID" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <NavigationProperty Name="User" Relationship="Self.Subscription_User" FromRole="Subscription_User_Source" ToRole="Subscription_User_Target" />
+          <NavigationProperty Name="Pet" Relationship="Self.Subscription_Pet" FromRole="Subscription_Pet_Source" ToRole="Subscription_Pet_Target" />
+          <NavigationProperty Name="Product" Relationship="Self.Subscription_Product" FromRole="Subscription_Product_Source" ToRole="Subscription_Product_Target" />
+          <NavigationProperty Name="Vet" Relationship="Self.Subscription_Vet" FromRole="Subscription_Vet_Source" ToRole="Subscription_Vet_Target" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="Cost" Type="Double" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="PetTypeId" Type="Int32" Nullable="false" />
+          <Property Name="LowerWeightLimit" Type="Double" Nullable="false" />
+          <Property Name="HeigherWeightLimit" Type="Double" Nullable="false" />
+          <NavigationProperty Name="PetType" Relationship="Self.Product_PetType" FromRole="Product_PetType_Source" ToRole="Product_PetType_Target" />
+          <NavigationProperty Name="Vets" Relationship="Self.Vet_AvailableProducts" FromRole="Vet_AvailableProducts_Target" ToRole="Vet_AvailableProducts_Source" />
+        </EntityType>
+        <EntityType Name="Vet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="false" />
+          <Property Name="Username" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="Password" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <NavigationProperty Name="AvailableProducts" Relationship="Self.Vet_AvailableProducts" FromRole="Vet_AvailableProducts_Source" ToRole="Vet_AvailableProducts_Target" />
+          <NavigationProperty Name="Subscriptions" Relationship="Self.Subscription_Vet" FromRole="Subscription_Vet_Target" ToRole="Subscription_Vet_Source" />
+          <NavigationProperty Name="PetOwners" Relationship="Self.User_Vet" FromRole="User_Vet_Target" ToRole="User_Vet_Source" />
+          <NavigationProperty Name="Conditions" Relationship="Self.Condition_Vet" FromRole="Condition_Vet_Target" ToRole="Condition_Vet_Source" />
+          <NavigationProperty Name="Schedules" Relationship="Self.Schedule_Vet" FromRole="Schedule_Vet_Target" ToRole="Schedule_Vet_Source" />
+        </EntityType>
+        <EntityType Name="Condition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="Description" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="VetId" Type="Int32" Nullable="false" />
+          <Property Name="ScheduleId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="Vet" Relationship="Self.Condition_Vet" FromRole="Condition_Vet_Source" ToRole="Condition_Vet_Target" />
+          <NavigationProperty Name="Pets" Relationship="Self.Condition_Pets" FromRole="Condition_Pets_Source" ToRole="Condition_Pets_Target" />
+          <NavigationProperty Name="Schedule" Relationship="Self.Condition_Schedule" FromRole="Condition_Schedule_Source" ToRole="Condition_Schedule_Target" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="Description" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="VetId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.Schedule_Users" FromRole="Schedule_Users_Source" ToRole="Schedule_Users_Target" />
+          <NavigationProperty Name="Events" Relationship="Self.Event_Schedule" FromRole="Event_Schedule_Target" ToRole="Event_Schedule_Source" />
+          <NavigationProperty Name="Vet" Relationship="Self.Schedule_Vet" FromRole="Schedule_Vet_Source" ToRole="Schedule_Vet_Target" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p4:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" FixedLength="false" MaxLength="Max" Unicode="true" Nullable="true" />
+          <Property Name="StartDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="EndDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="ScheduleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Schedule" Relationship="Self.Event_Schedule" FromRole="Event_Schedule_Source" ToRole="Event_Schedule_Target" />
+        </EntityType>
+        <EnumType Name="Role" IsFlags="false" UnderlyingType="Int32">
+          <Member Name="SiteAdmin" Value="0" />
+          <Member Name="PetOwner" Value="1" />
+          <Member Name="Vet" Value="2" />
+          <Member Name="WarehouseAdmin" Value="3" />
+        </EnumType>
+        <EnumType Name="Status" IsFlags="false" UnderlyingType="Int32">
+          <Member Name="Active" Value="0" />
+          <Member Name="Inactive" Value="1" />
+        </EnumType>
+        <Association Name="Breed_PetType">
+          <End Role="Breed_PetType_Source" Type="Self.Breed" Multiplicity="*" />
+          <End Role="Breed_PetType_Target" Type="Self.PetType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Breed_PetType_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Breed_PetType_Source">
+              <PropertyRef Name="PetTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pet_Breed">
+          <End Role="Pet_Breed_Source" Type="Self.Pet" Multiplicity="*" />
+          <End Role="Pet_Breed_Target" Type="Self.Breed" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Pet_Breed_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet_Breed_Source">
+              <PropertyRef Name="BreedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Subscription_User">
+          <End Role="Subscription_User_Source" Type="Self.Subscription" Multiplicity="*" />
+          <End Role="Subscription_User_Target" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Subscription_User_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscription_User_Source">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Subscription_Pet">
+          <End Role="Subscription_Pet_Source" Type="Self.Subscription" Multiplicity="*" />
+          <End Role="Subscription_Pet_Target" Type="Self.Pet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Subscription_Pet_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscription_Pet_Source">
+              <PropertyRef Name="PetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Product_PetType">
+          <End Role="Product_PetType_Source" Type="Self.Product" Multiplicity="*" />
+          <End Role="Product_PetType_Target" Type="Self.PetType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Product_PetType_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_PetType_Source">
+              <PropertyRef Name="PetTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Vet_AvailableProducts">
+          <End Role="Vet_AvailableProducts_Source" Type="Self.Vet" Multiplicity="*" />
+          <End Role="Vet_AvailableProducts_Target" Type="Self.Product" Multiplicity="*" />
+        </Association>
+        <Association Name="Condition_Vet">
+          <End Role="Condition_Vet_Source" Type="Self.Condition" Multiplicity="*" />
+          <End Role="Condition_Vet_Target" Type="Self.Vet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Condition_Vet_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Condition_Vet_Source">
+              <PropertyRef Name="VetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Condition_Pets">
+          <End Role="Condition_Pets_Source" Type="Self.Condition" Multiplicity="*" />
+          <End Role="Condition_Pets_Target" Type="Self.Pet" Multiplicity="*" />
+        </Association>
+        <Association Name="Schedule_Users">
+          <End Role="Schedule_Users_Source" Type="Self.Schedule" Multiplicity="*" />
+          <End Role="Schedule_Users_Target" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <Association Name="Event_Schedule">
+          <End Role="Event_Schedule_Source" Type="Self.Event" Multiplicity="*" />
+          <End Role="Event_Schedule_Target" Type="Self.Schedule" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Event_Schedule_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Event_Schedule_Source">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Schedule_Vet">
+          <End Role="Schedule_Vet_Source" Type="Self.Schedule" Multiplicity="*" />
+          <End Role="Schedule_Vet_Target" Type="Self.Vet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Schedule_Vet_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Schedule_Vet_Source">
+              <PropertyRef Name="VetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Condition_Schedule">
+          <End Role="Condition_Schedule_Source" Type="Self.Condition" Multiplicity="*" />
+          <End Role="Condition_Schedule_Target" Type="Self.Schedule" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Condition_Schedule_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Condition_Schedule_Source">
+              <PropertyRef Name="ScheduleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Subscription_Product">
+          <End Role="Subscription_Product_Source" Type="Self.Subscription" Multiplicity="*" />
+          <End Role="Subscription_Product_Target" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Subscription_Product_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscription_Product_Source">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Subscription_Vet">
+          <End Role="Subscription_Vet_Source" Type="Self.Subscription" Multiplicity="*" />
+          <End Role="Subscription_Vet_Target" Type="Self.Vet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Subscription_Vet_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Subscription_Vet_Source">
+              <PropertyRef Name="VetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User_Vet">
+          <End Role="User_Vet_Source" Type="Self.User" Multiplicity="*" />
+          <End Role="User_Vet_Target" Type="Self.Vet" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User_Vet_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User_Vet_Source">
+              <PropertyRef Name="VetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Pet_User">
+          <End Role="Pet_User_Source" Type="Self.Pet" Multiplicity="*" />
+          <End Role="Pet_User_Target" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <ReferentialConstraint>
+            <Principal Role="Pet_User_Target">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet_User_Source">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FnRDbContext">
+          <EntitySet Name="Breeds" EntityType="Self.Breed" />
+          <EntitySet Name="PetTypes" EntityType="Self.PetType" />
+          <EntitySet Name="Pets" EntityType="Self.Pet" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Subscriptions" EntityType="Self.Subscription" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Vets" EntityType="Self.Vet" />
+          <EntitySet Name="Conditions" EntityType="Self.Condition" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <AssociationSet Name="Breed_PetType" Association="Self.Breed_PetType">
+            <End Role="Breed_PetType_Source" EntitySet="Breeds" />
+            <End Role="Breed_PetType_Target" EntitySet="PetTypes" />
+          </AssociationSet>
+          <AssociationSet Name="Pet_Breed" Association="Self.Pet_Breed">
+            <End Role="Pet_Breed_Source" EntitySet="Pets" />
+            <End Role="Pet_Breed_Target" EntitySet="Breeds" />
+          </AssociationSet>
+          <AssociationSet Name="Subscription_User" Association="Self.Subscription_User">
+            <End Role="Subscription_User_Source" EntitySet="Subscriptions" />
+            <End Role="Subscription_User_Target" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Subscription_Pet" Association="Self.Subscription_Pet">
+            <End Role="Subscription_Pet_Source" EntitySet="Subscriptions" />
+            <End Role="Subscription_Pet_Target" EntitySet="Pets" />
+          </AssociationSet>
+          <AssociationSet Name="Product_PetType" Association="Self.Product_PetType">
+            <End Role="Product_PetType_Source" EntitySet="Products" />
+            <End Role="Product_PetType_Target" EntitySet="PetTypes" />
+          </AssociationSet>
+          <AssociationSet Name="Vet_AvailableProducts" Association="Self.Vet_AvailableProducts">
+            <End Role="Vet_AvailableProducts_Source" EntitySet="Vets" />
+            <End Role="Vet_AvailableProducts_Target" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="Condition_Vet" Association="Self.Condition_Vet">
+            <End Role="Condition_Vet_Source" EntitySet="Conditions" />
+            <End Role="Condition_Vet_Target" EntitySet="Vets" />
+          </AssociationSet>
+          <AssociationSet Name="Condition_Pets" Association="Self.Condition_Pets">
+            <End Role="Condition_Pets_Source" EntitySet="Conditions" />
+            <End Role="Condition_Pets_Target" EntitySet="Pets" />
+          </AssociationSet>
+          <AssociationSet Name="Schedule_Users" Association="Self.Schedule_Users">
+            <End Role="Schedule_Users_Source" EntitySet="Schedules" />
+            <End Role="Schedule_Users_Target" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="Event_Schedule" Association="Self.Event_Schedule">
+            <End Role="Event_Schedule_Source" EntitySet="Events" />
+            <End Role="Event_Schedule_Target" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="Schedule_Vet" Association="Self.Schedule_Vet">
+            <End Role="Schedule_Vet_Source" EntitySet="Schedules" />
+            <End Role="Schedule_Vet_Target" EntitySet="Vets" />
+          </AssociationSet>
+          <AssociationSet Name="Condition_Schedule" Association="Self.Condition_Schedule">
+            <End Role="Condition_Schedule_Source" EntitySet="Conditions" />
+            <End Role="Condition_Schedule_Target" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="Subscription_Product" Association="Self.Subscription_Product">
+            <End Role="Subscription_Product_Source" EntitySet="Subscriptions" />
+            <End Role="Subscription_Product_Target" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="Subscription_Vet" Association="Self.Subscription_Vet">
+            <End Role="Subscription_Vet_Source" EntitySet="Subscriptions" />
+            <End Role="Subscription_Vet_Target" EntitySet="Vets" />
+          </AssociationSet>
+          <AssociationSet Name="User_Vet" Association="Self.User_Vet">
+            <End Role="User_Vet_Source" EntitySet="Users" />
+            <End Role="User_Vet_Target" EntitySet="Vets" />
+          </AssociationSet>
+          <AssociationSet Name="Pet_User" Association="Self.Pet_User">
+            <End Role="Pet_User_Source" EntitySet="Pets" />
+            <End Role="Pet_User_Target" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </ConceptualModels>
+    <Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FnRDatabasesStoreContainer" CdmEntityContainer="FnRDbContext">
+    <EntitySetMapping Name="Breeds">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.Breed)">
+        <MappingFragment StoreEntitySet="Breeds">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdealWeight" ColumnName="IdealWeight" />
+          <ScalarProperty Name="PetTypeId" ColumnName="PetTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PetTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.PetType)">
+        <MappingFragment StoreEntitySet="PetTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pets">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.Pet)">
+        <MappingFragment StoreEntitySet="Pets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BreedId" ColumnName="BreedId" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="VetId" ColumnName="VetId" />
+          <ScalarProperty Name="TokenCustomerID" ColumnName="TokenCustomerID" />
+          <ScalarProperty Name="RebillCustomerID" ColumnName="RebillCustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subscriptions">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.Subscription)">
+        <MappingFragment StoreEntitySet="Subscriptions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PetId" ColumnName="PetId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="VetId" ColumnName="VetId" />
+          <ScalarProperty Name="DateSubscribed" ColumnName="DateSubscribed" />
+          <ScalarProperty Name="NextDeliveryDate" ColumnName="NextDeliveryDate" />
+          <ScalarProperty Name="Sent" ColumnName="Sent" />
+          <ScalarProperty Name="RebillID" ColumnName="RebillID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PetTypeId" ColumnName="PetTypeId" />
+          <ScalarProperty Name="LowerWeightLimit" ColumnName="LowerWeightLimit" />
+          <ScalarProperty Name="HeigherWeightLimit" ColumnName="HeigherWeightLimit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vets">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.Vet)">
+        <MappingFragment StoreEntitySet="Vets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Conditions">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.Condition)">
+        <MappingFragment StoreEntitySet="Conditions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="VetId" ColumnName="VetId" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.Schedule)">
+        <MappingFragment StoreEntitySet="Schedules">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="VetId" ColumnName="VetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="IsTypeOf(FnR.Databases.Event)">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Vet_AvailableProducts" TypeName="FnR.Databases.Vet_AvailableProducts" StoreEntitySet="Vet_AvailableProducts">
+      <EndProperty Name="Vet_AvailableProducts_Source">
+        <ScalarProperty Name="Id" ColumnName="Vets_Id" />
+      </EndProperty>
+      <EndProperty Name="Vet_AvailableProducts_Target">
+        <ScalarProperty Name="Id" ColumnName="AvailableProducts_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Condition_Pets" TypeName="FnR.Databases.Condition_Pets" StoreEntitySet="Condition_Pets">
+      <EndProperty Name="Condition_Pets_Source">
+        <ScalarProperty Name="Id" ColumnName="Conditions_Id" />
+      </EndProperty>
+      <EndProperty Name="Condition_Pets_Target">
+        <ScalarProperty Name="Id" ColumnName="Pets_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Schedule_Users" TypeName="FnR.Databases.Schedule_Users" StoreEntitySet="Schedule_Users">
+      <EndProperty Name="Schedule_Users_Source">
+        <ScalarProperty Name="Id" ColumnName="Schedules_Id" />
+      </EndProperty>
+      <EndProperty Name="Schedule_Users_Target">
+        <ScalarProperty Name="Id" ColumnName="Users_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></Mappings>
+    <StorageModels>
+    <Schema Namespace="FnR.Databases.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FnRDatabasesStoreContainer">
+    <EntitySet Name="Breeds" EntityType="FnR.Databases.Store.Breeds" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PetTypes" EntityType="FnR.Databases.Store.PetTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pets" EntityType="FnR.Databases.Store.Pets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="FnR.Databases.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Subscriptions" EntityType="FnR.Databases.Store.Subscriptions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Products" EntityType="FnR.Databases.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vets" EntityType="FnR.Databases.Store.Vets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Conditions" EntityType="FnR.Databases.Store.Conditions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Schedules" EntityType="FnR.Databases.Store.Schedules" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Events" EntityType="FnR.Databases.Store.Events" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vet_AvailableProducts" EntityType="FnR.Databases.Store.Vet_AvailableProducts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Condition_Pets" EntityType="FnR.Databases.Store.Condition_Pets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Schedule_Users" EntityType="FnR.Databases.Store.Schedule_Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="Breed_PetType" Association="FnR.Databases.Store.Breed_PetType">
+      <End Role="Breed_PetType_Source" EntitySet="Breeds" />
+      <End Role="Breed_PetType_Target" EntitySet="PetTypes" />
+    </AssociationSet>
+    <AssociationSet Name="Pet_Breed" Association="FnR.Databases.Store.Pet_Breed">
+      <End Role="Pet_Breed_Source" EntitySet="Pets" />
+      <End Role="Pet_Breed_Target" EntitySet="Breeds" />
+    </AssociationSet>
+    <AssociationSet Name="Subscription_User" Association="FnR.Databases.Store.Subscription_User">
+      <End Role="Subscription_User_Source" EntitySet="Subscriptions" />
+      <End Role="Subscription_User_Target" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Subscription_Pet" Association="FnR.Databases.Store.Subscription_Pet">
+      <End Role="Subscription_Pet_Source" EntitySet="Subscriptions" />
+      <End Role="Subscription_Pet_Target" EntitySet="Pets" />
+    </AssociationSet>
+    <AssociationSet Name="Product_PetType" Association="FnR.Databases.Store.Product_PetType">
+      <End Role="Product_PetType_Source" EntitySet="Products" />
+      <End Role="Product_PetType_Target" EntitySet="PetTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vet_AvailableProducts_Vet_AvailableProducts_Source" Association="FnR.Databases.Store.FK_Vet_AvailableProducts_Vet_AvailableProducts_Source">
+      <End Role="Vet_AvailableProducts_Source" EntitySet="Vets" />
+      <End Role="Vet_AvailableProducts" EntitySet="Vet_AvailableProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vet_AvailableProducts_Vet_AvailableProducts_Target" Association="FnR.Databases.Store.FK_Vet_AvailableProducts_Vet_AvailableProducts_Target">
+      <End Role="Vet_AvailableProducts_Target" EntitySet="Products" />
+      <End Role="Vet_AvailableProducts" EntitySet="Vet_AvailableProducts" />
+    </AssociationSet>
+    <AssociationSet Name="Condition_Vet" Association="FnR.Databases.Store.Condition_Vet">
+      <End Role="Condition_Vet_Source" EntitySet="Conditions" />
+      <End Role="Condition_Vet_Target" EntitySet="Vets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Condition_Pets_Condition_Pets_Source" Association="FnR.Databases.Store.FK_Condition_Pets_Condition_Pets_Source">
+      <End Role="Condition_Pets_Source" EntitySet="Conditions" />
+      <End Role="Condition_Pets" EntitySet="Condition_Pets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Condition_Pets_Condition_Pets_Target" Association="FnR.Databases.Store.FK_Condition_Pets_Condition_Pets_Target">
+      <End Role="Condition_Pets_Target" EntitySet="Pets" />
+      <End Role="Condition_Pets" EntitySet="Condition_Pets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Users_Schedule_Users_Source" Association="FnR.Databases.Store.FK_Schedule_Users_Schedule_Users_Source">
+      <End Role="Schedule_Users_Source" EntitySet="Schedules" />
+      <End Role="Schedule_Users" EntitySet="Schedule_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Schedule_Users_Schedule_Users_Target" Association="FnR.Databases.Store.FK_Schedule_Users_Schedule_Users_Target">
+      <End Role="Schedule_Users_Target" EntitySet="Users" />
+      <End Role="Schedule_Users" EntitySet="Schedule_Users" />
+    </AssociationSet>
+    <AssociationSet Name="Event_Schedule" Association="FnR.Databases.Store.Event_Schedule">
+      <End Role="Event_Schedule_Source" EntitySet="Events" />
+      <End Role="Event_Schedule_Target" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="Schedule_Vet" Association="FnR.Databases.Store.Schedule_Vet">
+      <End Role="Schedule_Vet_Source" EntitySet="Schedules" />
+      <End Role="Schedule_Vet_Target" EntitySet="Vets" />
+    </AssociationSet>
+    <AssociationSet Name="Condition_Schedule" Association="FnR.Databases.Store.Condition_Schedule">
+      <End Role="Condition_Schedule_Source" EntitySet="Conditions" />
+      <End Role="Condition_Schedule_Target" EntitySet="Schedules" />
+    </AssociationSet>
+    <AssociationSet Name="Subscription_Product" Association="FnR.Databases.Store.Subscription_Product">
+      <End Role="Subscription_Product_Source" EntitySet="Subscriptions" />
+      <End Role="Subscription_Product_Target" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="Subscription_Vet" Association="FnR.Databases.Store.Subscription_Vet">
+      <End Role="Subscription_Vet_Source" EntitySet="Subscriptions" />
+      <End Role="Subscription_Vet_Target" EntitySet="Vets" />
+    </AssociationSet>
+    <AssociationSet Name="User_Vet" Association="FnR.Databases.Store.User_Vet">
+      <End Role="User_Vet_Source" EntitySet="Users" />
+      <End Role="User_Vet_Target" EntitySet="Vets" />
+    </AssociationSet>
+    <AssociationSet Name="Pet_User" Association="FnR.Databases.Store.Pet_User">
+      <End Role="Pet_User_Source" EntitySet="Pets" />
+      <End Role="Pet_User_Target" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Breeds">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdealWeight" Type="float" Nullable="false" />
+    <Property Name="PetTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PetTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BreedId" Type="int" Nullable="false" />
+    <Property Name="Birthday" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Weight" Type="float" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Role" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="VetId" Type="int" Nullable="true" />
+    <Property Name="TokenCustomerID" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="RebillCustomerID" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Subscriptions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="PetId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="VetId" Type="int" Nullable="false" />
+    <Property Name="DateSubscribed" Type="datetime" Nullable="false" />
+    <Property Name="NextDeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="Sent" Type="bit" Nullable="false" />
+    <Property Name="RebillID" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Cost" Type="float" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="PetTypeId" Type="int" Nullable="false" />
+    <Property Name="LowerWeightLimit" Type="float" Nullable="false" />
+    <Property Name="HeigherWeightLimit" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Conditions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="VetId" Type="int" Nullable="false" />
+    <Property Name="ScheduleId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Schedules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="VetId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+    <Property Name="EndDateTime" Type="datetime" Nullable="false" />
+    <Property Name="ScheduleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vet_AvailableProducts">
+    <Key>
+      <PropertyRef Name="Vets_Id" />
+      <PropertyRef Name="AvailableProducts_Id" />
+    </Key>
+    <Property Name="Vets_Id" Type="int" Nullable="false" />
+    <Property Name="AvailableProducts_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Condition_Pets">
+    <Key>
+      <PropertyRef Name="Conditions_Id" />
+      <PropertyRef Name="Pets_Id" />
+    </Key>
+    <Property Name="Conditions_Id" Type="int" Nullable="false" />
+    <Property Name="Pets_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schedule_Users">
+    <Key>
+      <PropertyRef Name="Schedules_Id" />
+      <PropertyRef Name="Users_Id" />
+    </Key>
+    <Property Name="Schedules_Id" Type="int" Nullable="false" />
+    <Property Name="Users_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="Breed_PetType">
+    <End Role="Breed_PetType_Source" Type="FnR.Databases.Store.Breeds" Multiplicity="*" />
+    <End Role="Breed_PetType_Target" Type="FnR.Databases.Store.PetTypes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Breed_PetType_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Breed_PetType_Source">
+        <PropertyRef Name="PetTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pet_Breed">
+    <End Role="Pet_Breed_Source" Type="FnR.Databases.Store.Pets" Multiplicity="*" />
+    <End Role="Pet_Breed_Target" Type="FnR.Databases.Store.Breeds" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Pet_Breed_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pet_Breed_Source">
+        <PropertyRef Name="BreedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Subscription_User">
+    <End Role="Subscription_User_Source" Type="FnR.Databases.Store.Subscriptions" Multiplicity="*" />
+    <End Role="Subscription_User_Target" Type="FnR.Databases.Store.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Subscription_User_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subscription_User_Source">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Subscription_Pet">
+    <End Role="Subscription_Pet_Source" Type="FnR.Databases.Store.Subscriptions" Multiplicity="*" />
+    <End Role="Subscription_Pet_Target" Type="FnR.Databases.Store.Pets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Subscription_Pet_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subscription_Pet_Source">
+        <PropertyRef Name="PetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Product_PetType">
+    <End Role="Product_PetType_Source" Type="FnR.Databases.Store.Products" Multiplicity="*" />
+    <End Role="Product_PetType_Target" Type="FnR.Databases.Store.PetTypes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Product_PetType_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product_PetType_Source">
+        <PropertyRef Name="PetTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Condition_Vet">
+    <End Role="Condition_Vet_Source" Type="FnR.Databases.Store.Conditions" Multiplicity="*" />
+    <End Role="Condition_Vet_Target" Type="FnR.Databases.Store.Vets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Condition_Vet_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Condition_Vet_Source">
+        <PropertyRef Name="VetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Event_Schedule">
+    <End Role="Event_Schedule_Source" Type="FnR.Databases.Store.Events" Multiplicity="*" />
+    <End Role="Event_Schedule_Target" Type="FnR.Databases.Store.Schedules" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Event_Schedule_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Event_Schedule_Source">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Schedule_Vet">
+    <End Role="Schedule_Vet_Source" Type="FnR.Databases.Store.Schedules" Multiplicity="*" />
+    <End Role="Schedule_Vet_Target" Type="FnR.Databases.Store.Vets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Schedule_Vet_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule_Vet_Source">
+        <PropertyRef Name="VetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Condition_Schedule">
+    <End Role="Condition_Schedule_Source" Type="FnR.Databases.Store.Conditions" Multiplicity="*" />
+    <End Role="Condition_Schedule_Target" Type="FnR.Databases.Store.Schedules" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Condition_Schedule_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Condition_Schedule_Source">
+        <PropertyRef Name="ScheduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Subscription_Product">
+    <End Role="Subscription_Product_Source" Type="FnR.Databases.Store.Subscriptions" Multiplicity="*" />
+    <End Role="Subscription_Product_Target" Type="FnR.Databases.Store.Products" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Subscription_Product_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subscription_Product_Source">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Subscription_Vet">
+    <End Role="Subscription_Vet_Source" Type="FnR.Databases.Store.Subscriptions" Multiplicity="*" />
+    <End Role="Subscription_Vet_Target" Type="FnR.Databases.Store.Vets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Subscription_Vet_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Subscription_Vet_Source">
+        <PropertyRef Name="VetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_Vet">
+    <End Role="User_Vet_Source" Type="FnR.Databases.Store.Users" Multiplicity="*" />
+    <End Role="User_Vet_Target" Type="FnR.Databases.Store.Vets" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User_Vet_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User_Vet_Source">
+        <PropertyRef Name="VetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pet_User">
+    <End Role="Pet_User_Source" Type="FnR.Databases.Store.Pets" Multiplicity="*" />
+    <End Role="Pet_User_Target" Type="FnR.Databases.Store.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <ReferentialConstraint>
+      <Principal Role="Pet_User_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pet_User_Source">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vet_AvailableProducts_Vet_AvailableProducts_Source">
+    <End Role="Vet_AvailableProducts_Source" Type="FnR.Databases.Store.Vets" Multiplicity="1" />
+    <End Role="Vet_AvailableProducts" Type="FnR.Databases.Store.Vet_AvailableProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vet_AvailableProducts_Source">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vet_AvailableProducts">
+        <PropertyRef Name="Vets_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Vet_AvailableProducts_Vet_AvailableProducts_Target">
+    <End Role="Vet_AvailableProducts" Type="FnR.Databases.Store.Vet_AvailableProducts" Multiplicity="*" />
+    <End Role="Vet_AvailableProducts_Target" Type="FnR.Databases.Store.Products" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Vet_AvailableProducts_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Vet_AvailableProducts">
+        <PropertyRef Name="AvailableProducts_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Condition_Pets_Condition_Pets_Source">
+    <End Role="Condition_Pets_Source" Type="FnR.Databases.Store.Conditions" Multiplicity="1" />
+    <End Role="Condition_Pets" Type="FnR.Databases.Store.Condition_Pets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Condition_Pets_Source">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Condition_Pets">
+        <PropertyRef Name="Conditions_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Condition_Pets_Condition_Pets_Target">
+    <End Role="Condition_Pets" Type="FnR.Databases.Store.Condition_Pets" Multiplicity="*" />
+    <End Role="Condition_Pets_Target" Type="FnR.Databases.Store.Pets" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Condition_Pets_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Condition_Pets">
+        <PropertyRef Name="Pets_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Users_Schedule_Users_Source">
+    <End Role="Schedule_Users_Source" Type="FnR.Databases.Store.Schedules" Multiplicity="1" />
+    <End Role="Schedule_Users" Type="FnR.Databases.Store.Schedule_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule_Users_Source">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule_Users">
+        <PropertyRef Name="Schedules_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Schedule_Users_Schedule_Users_Target">
+    <End Role="Schedule_Users" Type="FnR.Databases.Store.Schedule_Users" Multiplicity="*" />
+    <End Role="Schedule_Users_Target" Type="FnR.Databases.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule_Users_Target">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Schedule_Users">
+        <PropertyRef Name="Users_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></StorageModels>
+  </Runtime>
+  <Designer>
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <Diagrams >
+      <Diagram DiagramId="46d876bf40a941d5a5685aaa6fb641dc" Name="Diagram1">
+        <EntityTypeShape EntityType="FnR.Databases.Breed" Width="1.5" PointX="9" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FnR.Databases.PetType" Width="1.5" PointX="11.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FnR.Databases.Pet" Width="1.5" PointX="5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FnR.Databases.User" Width="1.5" PointX="7.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FnR.Databases.Subscription" Width="1.5" PointX="2.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FnR.Databases.Product" Width="1.5" PointX="11.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FnR.Databases.Vet" Width="1.5" PointX="9.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FnR.Databases.Condition" Width="1.5" PointX="0.875" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FnR.Databases.Schedule" Width="1.5" PointX="4.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FnR.Databases.Event" Width="1.5" PointX="0.625" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="FnR.Databases.Breed_PetType" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Pet_Breed" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Subscription_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Subscription_Pet" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Product_PetType" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Vet_AvailableProducts" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Condition_Vet" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Condition_Pets" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Schedule_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Event_Schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Schedule_Vet" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Condition_Schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Subscription_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Subscription_Vet" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.User_Vet" ManuallyRouted="false" />
+        <AssociationConnector Association="FnR.Databases.Pet_User" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</Edmx>

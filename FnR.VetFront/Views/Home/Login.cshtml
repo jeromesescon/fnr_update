@@ -1,0 +1,43 @@
+﻿@model FnR.VetFront.ViewModels.VMLogin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Vet Admin Login</title>
+    <link href="~/Content/common.css" rel="stylesheet" />
+    <link href="~/Content/MyStyles/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="fieldset-container">
+        <fieldset>
+            <div class="logo">
+                <img src="~/Content/Images/farlogo.png"/></div>
+            <p>Vet Administration Login</p>
+            @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { id = "login-id" }))
+            {
+                @Html.ValidationSummary(false);
+                <div class="container">
+                    @Html.LabelFor(m => m.Username)
+                    @Html.EditorFor(m => m.Username)
+                </div>
+                <div class="container">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.EditorFor(m => m.Password)
+                </div>
+
+                <input class="button" type="submit" value="Login" />
+            }
+        </fieldset>
+    </div>
+    <script src="~/Scripts/jquery-2.0.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/MyScripts/login.js"></script>
+</body>
+</html>

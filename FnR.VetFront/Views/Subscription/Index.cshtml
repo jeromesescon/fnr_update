@@ -1,0 +1,94 @@
+﻿@model IEnumerable<FnR.Models.Subscription>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+@{
+    <link href="~/Content/MyStyles/subscription.css" rel="stylesheet" />     
+}
+
+@section scripts{
+    <script src="~/Scripts/MyScripts/subscription.js"></script>
+}
+
+
+<div class="list-container">
+    <div class="header-images">
+        <img src="~/Content/Images/petownersubs-header.png" />
+    </div>
+
+    <p>
+        <a href="@Url.Action("Index", "Home")" class="backbtn">
+            <img src="~/Content/Images/backtodashb.png" onmouseover="this.src='./Content/Images/backtodash-button.png'" onmouseout="this.src='./Content/Images/backtodashb.png' " />
+        </a>
+        <a href="@Url.Action("Create")" class="createbtn">
+            <img src="~/Content/Images/createsubs.png" onmouseover="this.src='./Content/Images/create-subscription-button.png'" onmouseout="this.src='./Content/Images/createsubs.png' " />
+        </a>
+    </p>
+    <input type="search" class="light-table-filter" data-table="filtered-table" placeholder="search pet owner subscription here..." autofocus />
+    <table id="sortedTable" class="tablesorter filtered-table">
+        <thead>
+            <tr>
+                <th>Pet Owner
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PetId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateSubscribed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NextDeliveryDate)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pet.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.DisplayName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateSubscribed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NextDeliveryDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Unsubscribe", "Delete", new { id = item.Id }, new { @class = "delete" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div id="pager" class="pager">
+        <form>
+            <img class="first" src="./Content/first.png" />
+            <img class="prev" src="./Content/prev.png" />
+            <input class="pagedisplay" type="text" />
+            <img class="next" src="./Content/next.png" />
+            <img class="last" src="./Content/last.png" />
+            <select class="pagesize">
+                <option selected="selected" value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+            </select>
+        </form>
+    </div>
+</div>

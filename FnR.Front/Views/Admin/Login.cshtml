@@ -1,0 +1,39 @@
+﻿@model FnR.Front.ViewModels.VMLogin
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>FnR | Admin Login</title>
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.0.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div id="login-page">
+        @using (Html.BeginForm("Login", "Admin", FormMethod.Post, new { id = "login-form" }))
+        {
+            <fieldset class="form">
+                <legend>Admin Login</legend>
+                @Html.ValidationSummary(false)
+                <div class="field">
+                    @Html.LabelFor(m => m.Username)
+                    @Html.EditorFor(m => m.Username)
+                </div>
+                <div class="field">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.EditorFor(m => m.Password)
+                </div>
+                <div class="field">
+                    <input type="submit" />
+                </div>
+            </fieldset>
+        }
+    </div>
+</body>
+</html>

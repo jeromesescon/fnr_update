@@ -1,0 +1,101 @@
+﻿@using System.Web.Optimization
+@model FnR.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_FnRLayout.cshtml";
+}
+
+<div id="edit-content">
+    <div class="h2">
+        <h2>Update Selected Product</h2></div>
+
+<div id="backlistbtn">
+    <a href="@Url.Action("Index")" >
+        <img src="~/Content/Images/backtolist-button.png" onmouseover="this.src='../../Content/Images/backtolist-button-hover.png' " onmouseout="this.src='../../Content/Images/backtolist-button.png ' " /></a>
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Product</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Cost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Cost)
+            @Html.ValidationMessageFor(model => model.Cost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Amount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PetTypeId, "Pet Type")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PetTypeId", "-- Select Pet Type --")
+            @Html.ValidationMessageFor(model => model.PetTypeId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LowerWeightLimit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LowerWeightLimit)
+            @Html.ValidationMessageFor(model => model.LowerWeightLimit)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.HeigherWeightLimit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.HeigherWeightLimit)
+            @Html.ValidationMessageFor(model => model.HeigherWeightLimit)
+        </div>
+
+        <div id="createbtn">
+            <input class="btn" type="submit" value="Save"/>
+        </div>
+    </fieldset>
+}
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

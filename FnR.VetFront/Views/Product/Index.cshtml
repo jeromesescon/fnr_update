@@ -1,0 +1,100 @@
+﻿@model IEnumerable<FnR.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/MyStyles/product.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Scripts/MyScripts/product.js"></script>
+}
+
+
+<div class="list-container">
+    <div class="header-image">
+        <img src="~/Content/Images/products-header.png" />
+    </div>
+
+    <p>
+        <a href="@Url.Action("Index", "Home")" class="backbtn">
+            <img src="~/Content/Images/backtodashb.png" onmouseover="this.src='./Content/Images/backtodash-button.png'" onmouseout="this.src='./Content/Images/backtodashb.png' " />
+        </a>
+        <a href="@Url.Action("Create")" class="addbtn" >
+            <img src="~/Content/Images/addprod.png" onmouseover="this.src='./Content/Images/add-product-button.png'" onmouseout="this.src='./Content/Images/addprod.png' " /></a>
+    </p>
+    <input type="search" class="light-table-filter" data-table="filtered-table" placeholder="search product here..." autofocus />
+    <table id="sortedTable" class="tablesorter filtered-table">
+        <thead>
+            <tr>
+                <th>Product Name
+                </th>
+                <th>Product Description
+                </th>
+                <th>Product Cost ($)
+                </th>
+                <th>Price ($)
+                </th>
+                <th>Amount per Pack
+                </th>
+                <th>Pet Type
+                </th>
+                <th>Pet Weight
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PetType.Name)
+                    </td>
+                    <td>
+                        <span>@item.LowerWeightLimit@{<text>Kg</text>}</span><span>-</span><span>@item.HeigherWeightLimit@{<text>Kg</text>}</span>
+                    </td>
+                    <td>
+                        @Html.ActionLink("Remove", "RemoveProduct", new { productId = item.Id }, new { @class = "delete" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div id="pager" class="pager">
+        <form>
+            <img class="first" src="./Content/first.png" />
+            <img class="prev" src="./Content/prev.png" />
+            <input class="pagedisplay" type="text" />
+            <img class="next" src="./Content/next.png" />
+            <img class="last" src="./Content/last.png" />
+            <select class="pagesize">
+                <option selected="selected" value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+            </select>
+        </form>
+    </div>
+
+</div>

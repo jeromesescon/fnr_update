@@ -1,0 +1,42 @@
+﻿@model FnR.Models.DoctorAppointmentStatus
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Doctor Appointment Status</legend>
+    
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Doctor.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Doctor.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ExpectedWaitTime)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExpectedWaitTime)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ExpectedDurationOfDelay)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExpectedDurationOfDelay)
+    </div>
+    
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,66 @@
+﻿@using FnR.Models
+@model FnR.Models.Schedule
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+
+
+@section styles
+{
+    <link href="~/Content/MyStyles/scheduling.css" rel="stylesheet" />
+}
+
+@section scripts
+{
+    <script src="~/Scripts/MyScripts/scheduling.js"></script>
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="fieldset-container">
+        <fieldset>
+            <legend>Schedule</legend>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Doctor)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.DoctorId, (SelectList) ViewBag.Doctors, "-- Assign to Doctor --")
+                @*@Html.ValidationMessageFor(model => model.DoctorId)*@
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+                @*<input type="hidden" name="VetId" id="VetId" value="@ViewBag.VetId"/>*@
+
+            <div style="clear: both;">
+                <input type="submit" value="Create" />
+            </div>
+        </fieldset>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

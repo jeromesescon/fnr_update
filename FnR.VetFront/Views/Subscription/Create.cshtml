@@ -1,0 +1,134 @@
+﻿@using System.Web.UI.WebControls
+@using FnR.Models
+@model FnR.Models.Subscription
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+@section styles
+{
+    <link href="~/Content/MyStyles/subscription.css" rel="stylesheet" />
+}
+
+@section scripts
+{
+    <script src="~/Scripts/MyScripts/subscription.js"></script>
+    @*<script src="~/Scripts/jquery-2.0.2.js"></script>*@
+}
+
+<div class="fieldset-container">
+    <h2>Create New Subscription</h2>
+    @Html.Hidden("getuserpets-url", Url.Action("GetUserPets", "Subscription"))
+    @Html.Hidden("getpetproducts-url", Url.Action("GetPetProducts", "Subscription"))
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(false)
+
+        <fieldset>
+            <legend>Subscription</legend>
+
+            <div class="container">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.UserId)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(m => m.UserId, ViewBag.UserList as SelectList, "-- Select User --")
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.PetId)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(m => m.PetId, new SelectList(new ListItemCollection()), "-- Select Pet --")
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.ProductId)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(m => m.ProductId, new SelectList(new ListItemCollection()), "-- Select Product --")
+                </div>
+            </div>
+
+            @Html.Hidden("VetId", ViewBag.VetId as string)
+
+            <div class="button">
+                <input type="image" src="~/Content/Images/subscribe-button.png" alt="submit" onmouseover="this.src='../Content/Images/subscribe-button-hover.png'" onmouseout="this.src='../Content/Images/subscribe-button.png' " />
+                <a href="@Url.Action("Index")" class="backlistbtn">
+                    <img src="~/Content/Images/backtolist.png" onmouseover="this.src='../Content/Images/backtolist-button.png'" onmouseout="this.src='../Content/Images/backtolist.png' " /></a>
+            </div>
+        </fieldset>
+    }
+</div>
+
+<div class="list-container">
+    <h2>Existing Subscriptions</h2>
+    <input type="search" class="light-table-filter" data-table="filtered-table" placeholder="search existing subscription here..." autofocus />
+    <table id="sortedTable" class="tablesorter filtered-table">
+        <thead>
+            <tr>
+                <th>Pet Owner
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PetId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateSubscribed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NextDeliveryDate)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.AddedSubscriptions as IEnumerable<Subscription>)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pet.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.DisplayName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateSubscribed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NextDeliveryDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div id="pager" class="pager">
+        <form>
+            <img class="first" src="../Content/first.png" />
+            <img class="prev" src="../Content/prev.png" />
+            <input class="pagedisplay" type="text" />
+            <img class="next" src="../Content/next.png" />
+            <img class="last" src="../Content/last.png" />
+            <select class="pagesize">
+                <option selected="selected" value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+            </select>
+        </form>
+    </div>
+</div>

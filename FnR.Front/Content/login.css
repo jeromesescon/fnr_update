@@ -1,0 +1,73 @@
+﻿body {
+    background: url('../Content/Images/bg.jpg') repeat;
+}
+
+fieldset.form {
+    width: 284px;
+    background: #444;
+    padding: 30px;
+}
+
+fieldset .field {
+    overflow: hidden;
+    color: #FFFFFF;
+}
+
+fieldset input[type=text], fieldset input[type=password] {
+    margin-bottom: 4px;
+    width: 206px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    padding: 5px;
+    background: #ddd;
+    font-family: "Times New Roman",Georgia,Serif;
+    font-size: 18px;
+    float: right;
+}
+
+fieldset.form input[type=submit] {
+    float: right;
+    padding: 4px;
+}   
+
+.field-validation-error {
+    text-align: right;
+    font-size: 12px;
+    color: red;
+    margin-right: 3px;
+}
+
+.input-validation-error {
+    border: solid 1px red;
+}
+
+.validation-summary-errors {
+    margin-top: 0 !important;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.validation-summary-errors ul {
+    margin-top: 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: red;
+}
+
+legend {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+fieldset {
+    border: solid 1px #888;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 20px #222;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-top: 60px;
+}

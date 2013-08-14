@@ -1,0 +1,34 @@
+﻿@model FnR.Models.PetType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_FnRLayout.cshtml";
+}
+
+<div id="details-content"> 
+
+<div class="h2">
+<h2>Selected Pet Type Details</h2></div>
+
+<div id="backlistbtn">
+    <a href="@Url.Action("Index")">
+        <img src="~/Content/Images/backtolist-button.png" onmouseover="this.src='../../Content/Images/backtolist-button-hover.png' " onmouseout="this.src='../../Content/Images/backtolist-button.png'" /></a>
+</div>
+
+<fieldset>
+    <legend>PetType</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    
+    <div id="editbtn">
+        <a href="@Url.Action("Edit", new { id=Model.Id })" >
+            <img src="~/Content/Images/edit-button.png" onmouseover="this.src='../../Content/Images/edit-button-hover.png' " onmouseout="this.src='../../Content/Images/edit-button.png'" /></a>
+    </div>
+</fieldset>
+
+</div>

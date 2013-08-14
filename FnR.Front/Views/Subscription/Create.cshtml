@@ -1,0 +1,69 @@
+﻿@using System.Web.Optimization
+@model FnR.Models.Subscription
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_FnRLayout.cshtml";
+}
+
+<div id="create-content">
+    <div class="h2">
+        <h2>Create New Subscriptions</h2>
+    </div>
+
+    <div id="backlistbtn">
+        <a href="@Url.Action("Index")" >
+            <img src="~/Content/Images/backtolist-button.png" onmouseover="this.src='../Content/Images/backtolist-button-hover.png' " onmouseout="this.src='../Content/Images/backtolist-button.png ' " /></a>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Subscription</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UserId, "User")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("UserId", "-- Select User --")
+                @Html.ValidationMessageFor(model => model.UserId)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PetId, "Pet")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("PetId", "-- Select Pet --")
+                @Html.ValidationMessageFor(model => model.PetId)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProductId, "Product")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("ProductId", "-- Select Product --")
+                @Html.ValidationMessageFor(model => model.ProductId)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.VetId, "Veterinarian")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("VetId", "-- Select Vet --")
+                @Html.ValidationMessageFor(model => model.VetId)
+            </div>
+
+            <div id="createbtn">
+                <input type="submit" class="btn" value="Create"/>
+            </div>
+        </fieldset>
+    }
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

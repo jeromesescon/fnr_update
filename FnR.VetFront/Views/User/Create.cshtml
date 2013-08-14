@@ -1,0 +1,161 @@
+﻿@using System.Web.Optimization
+@model FnR.Models.User
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/MyStyles/user.css" rel="stylesheet" />
+}
+
+<div class="fieldset-container">
+
+    <h2>Register New User</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>User</legend>
+
+            <table border="0">
+                <tr>
+                    <td class="editor-label" style="width: 300px;">
+                        @Html.LabelFor(model => model.FirstName)
+                    </td>
+                    <td class="editor-field">
+                        @Html.EditorFor(model => model.FirstName)
+                        @Html.ValidationMessageFor(model => model.FirstName)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.LastName)
+                    </td>
+                    <td class="editor-field">
+                        @Html.EditorFor(model => model.LastName)
+                        @Html.ValidationMessageFor(model => model.LastName)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.Email)
+                    </td>
+                    <td class="editor-field">
+                        @Html.EditorFor(model => model.Email)
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.Address)
+                    </td>
+                    <td class="editor-field">
+                        @Html.EditorFor(model => model.Address)
+                        @Html.ValidationMessageFor(model => model.Address)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.PhoneNumber)
+                    </td>
+                    <td class="editor-field">
+                        @Html.EditorFor(model => model.PhoneNumber)
+                        @Html.ValidationMessageFor(model => model.PhoneNumber)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.Username)
+                    </td>
+                    <td class="editor-field">
+                        @Html.EditorFor(model => model.Username)
+                        @Html.ValidationMessageFor(model => model.Username)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="editor-label">
+                        @Html.LabelFor(model => model.Password)
+                    </td>
+                    <td class="editor-field">
+                        @Html.EditorFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </td>
+                </tr>
+            </table>
+
+            @* <div class="editor-label">
+                @Html.LabelFor(model => model.FirstName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.FirstName)
+                @Html.ValidationMessageFor(model => model.FirstName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.LastName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.LastName)
+                @Html.ValidationMessageFor(model => model.LastName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Address)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Address)
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PhoneNumber)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PhoneNumber)
+                @Html.ValidationMessageFor(model => model.PhoneNumber)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Username)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Username)
+                @Html.ValidationMessageFor(model => model.Username)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>*@
+
+            <div style="clear: both;">
+                <input type="submit" value="Create" />
+            </div>
+        </fieldset>
+    }
+
+    <div id="backlistbtn">
+        <a href="@Url.Action("Index")">
+            <img src="~/Content/Images/backtolist.png" onmouseover="this.src='../../Content/Images/backtolist-button.png' " onmouseout="this.src='../../Content/Images/backtolist.png'" /></a>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

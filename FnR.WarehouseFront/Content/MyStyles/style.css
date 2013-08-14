@@ -1,0 +1,404 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.dashboard {
+    overflow: hidden;
+    width: 650px;
+    height: 630px;
+    border: solid 1px #000;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 14px #000;
+    background-image: url('../../Content/Images/bg-dashboard.jpg');
+}
+
+.header img{
+    width: 450px;
+}
+
+.nav {
+    float: left;
+    margin-left: 72px;
+    display: block;
+    width: 220px;
+    margin-top: 120px;
+    margin-bottom: 70px;
+    text-align: center;    
+}
+    .nav .img:hover {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+}
+    .nav .img:active {
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
+}
+
+.dashboard img {
+    margin-left: -4px;
+    width: 220px;
+    margin-top: 50px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+
+div#products-content {
+    padding: 10px;
+    margin: 20px;
+    border: solid 1px #222;
+    border-radius: 10px;
+    background: url('../../Content/Images/bg.jpg') repeat;
+    -webkit-box-shadow: 0px 0px 14px #222;
+    padding-top: 0;
+}
+
+div#delivery-content {
+    padding: 30px;
+    margin: 30px;
+    border: solid 1px #222;
+    border-radius: 10px;
+    background: url('../../Content/Images/bg.jpg') repeat;
+    -webkit-box-shadow: 0px 0px 14px #222;
+    padding-top: 0;
+}
+
+/*========== PRODUCT STYLE =============*/
+
+.create {
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+    .create:hover {
+        -webkit-box-shadow: 0px 0px 14px #fff;
+    }
+    .create:active {
+        -webkit-transform: scale(0.96);
+    }
+
+
+.create a{
+    color: #222;
+    text-decoration: none;
+}
+    .create a:hover {
+        color: darkred;
+        text-decoration: underline;
+    }
+
+
+div .create  {
+    background: #c5fe00;
+    width: 96px;
+    padding: 10px;
+    margin-left: -10px;
+    margin-bottom: 20px;
+    padding-left: 30px;  
+}
+
+
+/*======== DELIVERY STYLE  ========*/
+
+.button {
+    margin-bottom: 20px;
+}
+
+.button a {
+    border: 1px solid #444;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 5px;
+    border-radius: 5px;
+    background: rgb(40, 116, 175);
+    color: #ddd;
+}
+    .button a:hover {
+        color: rgb(12, 146, 200);
+        background: #000;
+        -webkit-box-shadow: 0px 0px 14px #666;
+    }
+    .button a:active {
+        color: #ddd;
+    }
+
+    .selected-button {
+        color: rgb(12, 146, 200) !important;
+        background: #000 !important;
+        -webkit-box-shadow: 0px 0px 14px #666 !important;
+    }
+
+.h2 {
+    background: #333;
+    margin-bottom: 10px;
+    width: 198px;
+    margin-left: -30px;
+    -webkit-transition: all 0.10s ease;
+}
+    .h2:hover {
+        -webkit-box-shadow: 0px 0px 20px #fff;
+    }
+    h2 {
+        color: #FFFFFF;
+        font-size: 20px;
+        margin-left: 28px;
+        padding: 5px;
+    }
+
+h3 {
+    color: #cb0000;
+    text-align: center;
+}
+
+/*============== BUTTONS ===============*/
+
+#createbtn .btn, #deletebtn .btn{
+    width: 100%;
+    margin-top: 10px;
+    font-family: 'Arial Unicode MS';
+    float: right;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: normal;
+    border-radius: 10px;
+    color: #FFF;
+    border: 1px solid #444;
+    cursor: pointer;
+    background-image: linear-gradient(bottom, #004D80 0%, #01193D 71%);
+    background-image: -o-linear-gradient(bottom, #004D80 0%, #01193D 71%);
+    background-image: -moz-linear-gradient(bottom, #004D80 0%, #01193D 71%);
+    background-image: -webkit-linear-gradient(bottom, #004D80 0%, #01193D 71%);
+    background-image: -ms-linear-gradient(bottom, #004D80 0%, #01193D 71%);
+
+    background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, #004D80),
+	color-stop(0.71, #01193D)
+);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background-image: -webkit-gradient
+}
+    #createbtn .btn:hover, #deletebtn .btn:hover {
+        background-image: linear-gradient(bottom, #1084D1 0%, #01193D 71%);
+        background-image: -o-linear-gradient(bottom, #1084D1 0%, #01193D 71%);
+        background-image: -moz-linear-gradient(bottom, #1084D1 0%, #01193D 71%);
+        background-image: -webkit-linear-gradient(bottom, #1084D1 0%, #01193D 71%);
+        background-image: -ms-linear-gradient(bottom, #1084D1 0%, #01193D 71%);
+        -webkit-box-shadow: 0px 0px 6px #999;
+        background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, #1084D1),
+	    color-stop(0.71, #01193D)
+    );
+    }
+    #createbtn .btn:active, #deletebtn .btn:active {
+        -webkit-box-shadow: 0px 0px 10px #aaa;
+    }
+
+
+#backlistbtn {
+    float: right;
+    margin-top: -46px;
+}
+
+#editbtn img {
+    margin-top: 10px;
+    float: right;
+}
+
+/*************
+Table Theme
+*************/
+/* overall */
+.tablesorter-default {
+	width: 100%;
+	font: 12px/18px Arial, Sans-serif;
+	color: #333;
+	background-color: #fff;
+	border-spacing: 2px;
+	margin: 10px 0 15px;
+	text-align: left;
+}
+
+/* header */
+.tablesorter-default th,
+.tablesorter-default thead td {
+	font: bold 12px/18px Arial, Sans-serif;
+	color: #000;
+	background-color: #fff;
+	border-collapse: collapse;
+	border-bottom: #ccc 2px solid;
+	padding: 0;
+}
+.tablesorter-default tfoot th,
+.tablesorter-default tfoot td {
+	border: 0;
+}
+.tablesorter-default .header,
+.tablesorter-default .tablesorter-header {
+	background-image: url(../../Content/bg.gif);
+	background-position: center right;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	white-space: normal;
+	padding: 4px 20px 4px 4px;
+}
+.tablesorter-default thead .headerSortUp,
+.tablesorter-default thead .tablesorter-headerSortUp,
+.tablesorter-default thead .tablesorter-headerAsc {
+	background-image:  url(../../Content/asc.gif);
+	border-bottom: #000 2px solid;
+}
+.tablesorter-default thead .headerSortDown,
+.tablesorter-default thead .tablesorter-headerSortDown,
+.tablesorter-default thead .tablesorter-headerDesc {
+	background-image:  url(../../Content/desc.gif);
+	border-bottom: #000 2px solid;
+}
+.tablesorter-default thead .sorter-false {
+	background-image: none;
+	padding: 4px;
+}
+
+/* tfoot */
+.tablesorter-default tfoot .tablesorter-headerSortUp,
+.tablesorter-default tfoot .tablesorter-headerSortDown,
+.tablesorter-default tfoot .tablesorter-headerAsc,
+.tablesorter-default tfoot .tablesorter-headerDesc {
+	border-top: #000 2px solid;
+}
+
+/* tbody */
+.tablesorter-default td {
+	background-color: #fff;
+	border-bottom: #ccc 1px solid;
+	padding: 4px;
+	vertical-align: top;
+}
+
+/* hovered row colors */
+.tablesorter-default tbody > tr:hover > td,
+.tablesorter-default tbody > tr.even:hover > td,
+.tablesorter-default tbody > tr.odd:hover > td {
+	background: #fff;
+	color: #000;
+}
+
+/* table processing indicator */
+.tablesorter-default .tablesorter-processing {
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+	 background-image: url(../../Content/loading.gif) !important; 
+}
+
+/* Zebra Widget - row alternating colors */
+.tablesorter-default tr.odd td {
+	background-color: #dfdfdf;
+}
+.tablesorter-default tr.even td {
+	background-color: #efefef;
+}
+
+/* Column Widget - column sort colors */
+.tablesorter-default tr.odd td.primary {
+	background-color: #bfbfbf;
+}
+.tablesorter-default td.primary,
+.tablesorter-default tr.even td.primary {
+	background-color: #d9d9d9;
+}
+.tablesorter-default tr.odd td.secondary {
+	background-color: #d9d9d9;
+}
+.tablesorter-default td.secondary,
+.tablesorter-default tr.even td.secondary {
+	background-color: #e6e6e6;
+}
+.tablesorter-default tr.odd td.tertiary {
+	background-color: #e6e6e6;
+}
+.tablesorter-default td.tertiary,
+.tablesorter-default tr.even td.tertiary {
+	background-color: #f2f2f2;
+}
+
+/* caption */
+caption {
+	background: #fff;
+}
+
+/* filter widget */
+.tablesorter-default .tablesorter-filter-row td {
+	background: #eee;
+	border-bottom: #ccc 1px solid;
+	line-height: normal;
+	text-align: center; /* center the input */
+	-webkit-transition: line-height 0.1s ease;
+	-moz-transition: line-height 0.1s ease;
+	-o-transition: line-height 0.1s ease;
+	transition: line-height 0.1s ease;
+}
+/* optional disabled input styling */
+.tablesorter-default .tablesorter-filter-row .disabled {
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	cursor: not-allowed;
+}
+/* hidden filter row */
+.tablesorter-default .tablesorter-filter-row.hideme td {
+	/*** *********************************************** ***/
+	/*** change this padding to modify the thickness     ***/
+	/*** of the closed filter row (height = padding x 2) ***/
+	padding: 2px;
+	/*** *********************************************** ***/
+	margin: 0;
+	line-height: 0;
+	cursor: pointer;
+}
+.tablesorter-default .tablesorter-filter-row.hideme .tablesorter-filter {
+	height: 1px;
+	min-height: 0;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	/* don't use visibility: hidden because it disables tabbing */
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+/* filters */
+.tablesorter-default .tablesorter-filter {
+	width: 95%;
+	height: auto;
+	margin: 4px;
+	padding: 4px;
+	background-color: #fff;
+	border: 1px solid #bbb;
+	color: #333;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: height 0.1s ease;
+	-moz-transition: height 0.1s ease;
+	-o-transition: height 0.1s ease;
+	transition: height 0.1s ease;
+}
+
+/* ajax error row */
+.tablesorter .tablesorter-errorRow td {
+	cursor: pointer;
+	background-color: #e6bf99;
+}

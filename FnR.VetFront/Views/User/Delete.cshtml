@@ -1,0 +1,108 @@
+﻿@model FnR.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+
+@section styles{
+    <link href="~/Content/MyStyles/user.css" rel="stylesheet" />
+}
+
+<div class="fieldset-container">
+
+    <div class="h2">
+        <h2>Delete Selected User</h2>
+    </div>
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    
+
+        <h3>Are you sure you want to delete this?</h3>
+        <fieldset>
+            <legend>User</legend>
+
+            <table border="0">
+                <tr>
+                    <td class="display-label" style="width: 300px;">Pet Owner's Vet</td>
+                    <td class="display-field">@Html.DisplayFor(model => model.Vet.Name)</td>
+                </tr>
+                <tr>
+                    <td class="display-label">@Html.DisplayNameFor(model => model.FirstName)</td>
+                    <td class="display-field">@Html.DisplayFor(model => model.FirstName)</td>
+                </tr>
+                <tr>
+                    <td class="display-label">@Html.DisplayNameFor(model => model.LastName)</td>
+                    <td class="display-field">@Html.DisplayFor(model => model.LastName)</td>
+                </tr>
+                <tr>
+                    <td class="display-label">@Html.DisplayNameFor(model => model.FullName)</td>
+                    <td class="display-field">@Html.DisplayFor(model => model.FullName)</td>
+                </tr>
+
+                <tr>
+
+                    <td class="display-label">
+                        @Html.DisplayNameFor(model => model.Email)
+                    </td>
+
+                    <td class="display-field">
+                        @Html.DisplayFor(model => model.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="display-label">
+                        @Html.DisplayNameFor(model => model.Address)
+                    </td>
+
+                    <td class="display-field">
+                        @Html.DisplayFor(model => model.Address)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="display-label">
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </td>
+
+                    <td class="display-field">
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="display-label">
+                        @Html.DisplayNameFor(model => model.Username)
+                    </td>
+
+                    <td class="display-field">
+                        @Html.DisplayFor(model => model.Username)
+                    </td>
+                </tr>
+                <tr>
+                    <td class="display-label">
+                        @Html.DisplayNameFor(model => model.Password)
+                    </td>
+
+                    <td class="display-field">
+                        @Html.DisplayFor(model => model.Password)
+                    </td>
+                </tr>
+
+
+            </table>
+
+            <div id="deletebtn">
+                <input type="submit" class="btn" value="Delete" />
+            </div>
+
+        </fieldset>
+    }
+    <div id="backlistbtn">
+        <a href="@Url.Action("Index")" >
+            <img src="~/Content/Images/backtolist.png" onmouseover="this.src='../../Content/Images/backtolist-button.png' " onmouseout="this.src='../../Content/Images/backtolist.png ' " /></a>
+    </div>
+</div>

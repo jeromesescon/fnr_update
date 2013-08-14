@@ -1,0 +1,84 @@
+﻿@model FnR.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_FnRLayout.cshtml";
+}
+
+<div id="details-content"> 
+
+<div class="h2">
+<h2>Selected Product Details</h2></div>
+
+<div id="backlistbtn">
+    <a href="@Url.Action("Index")">
+        <img src="~/Content/Images/backtolist-button.png" onmouseover="this.src='../../Content/Images/backtolist-button-hover.png' " onmouseout="this.src='../../Content/Images/backtolist-button.png'" /></a>
+</div>
+
+<fieldset>
+    <legend>Product</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Cost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Cost)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Amount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amount)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PetType.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PetType.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LowerWeightLimit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LowerWeightLimit)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HeigherWeightLimit)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HeigherWeightLimit)
+    </div>
+
+    <div id="editbtn">
+        <a href="@Url.Action("Edit", new { id=Model.Id })" >
+            <img src="~/Content/Images/edit-button.png" onmouseover="this.src='../../Content/Images/edit-button-hover.png' " onmouseout="this.src='../../Content/Images/edit-button.png'" /></a>
+    </div>
+
+</fieldset>
+
+</div>

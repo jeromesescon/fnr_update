@@ -1,0 +1,48 @@
+﻿@using System.Web.Optimization
+@model FnR.Models.PetType
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_FnRLayout.cshtml";
+}
+
+<div id="edit-content">
+
+<div class="h2">
+    <h2>Update Selected Pet Type</h2></div>
+
+<div id="backlistbtn">
+    <a href="@Url.Action("Index")" >
+        <img src="~/Content/Images/backtolist-button.png" onmouseover="this.src='../../Content/Images/backtolist-button-hover.png' " onmouseout="this.src='../../Content/Images/backtolist-button.png ' " /></a>
+</div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>PetType</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div id="createbtn">
+            <input  class="btn" type="submit" value="Save" />
+        </div>
+    </fieldset>
+}
+
+
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

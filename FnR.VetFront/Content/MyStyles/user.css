@@ -1,0 +1,138 @@
+﻿body {
+
+}
+/*div#registerUser-content{
+    padding: 20px;
+    margin: 30px;
+    border: solid 1px #666;
+    border-radius: 10px;
+    background: url('../Content/Images/content-bg1.jpg') repeat;
+    padding-top: 0;
+    -webkit-box-shadow: 0px 0px 20px #222;
+    -moz-box-shadow: 0px 0px 20px #222;
+}
+fieldset {
+    border: solid 1px #222;
+    padding-left: 50px;
+    padding-right: 60px;
+    padding-bottom: 20px;
+    padding-top: 26px;
+    border-radius: 10px;
+    background-image: linear-gradient(bottom, #000000 0%, #454545 57%);
+    background-image: -o-linear-gradient(bottom, #000000 0%, #454545 57%);
+    background-image: -moz-linear-gradient(bottom, #000000 0%, #454545 57%);
+    background-image: -webkit-linear-gradient(bottom, #000000 0%, #454545 57%);
+    background-image: -ms-linear-gradient(bottom, #000000 0%, #454545 57%);
+
+    background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, #000000),
+	color-stop(0.57, #454545)
+);
+    -webkit-box-shadow: 0px 0px 20px #eee;
+    margin: 0 auto;
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: 436px;
+}
+
+fieldset.form {
+    width: 284px;
+    background: #444;
+    padding: 30px;
+}
+
+fieldset .field {
+    overflow: hidden;
+    color: #FFFFFF;
+}
+
+fieldset label {
+    margin-right: 0px;
+}
+
+fieldset input[type=text], fieldset input[type=password], fieldset input[type=datetime], fieldset input[type=email], fieldset input[type=number] {
+    margin-bottom: 8px;
+    width: 206px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    padding: 5px;
+    background: #ddd;
+    font-family: "Times New Roman",Georgia,Serif;
+    font-size: 18px;
+    float: right;
+    margin-top: -46px;
+}
+
+fieldset select {
+    width: 218px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    background: #ddd;
+    font-size: 16px;
+    border: 1px solid #000;
+    font-family: "Times New Roman",Georgia,Serif;
+    float: right;
+    margin-bottom: 7px;
+    margin-top: -46px;
+}
+
+
+fieldset.form input[type=submit] {
+    float: right;
+    padding: 4px;
+}
+
+.editor-label, .display-label {
+    text-decoration: underline;
+    font-family:"Times New Roman",Georgia,Serif;    
+    color: #999;
+    margin-bottom: 19px;
+    margin-top: 4px;
+}
+    .editor-label:hover, .display-label:hover {
+        color: #eee;
+    }
+
+.editor-field, .display-field {
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+legend {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+}*/
+
+/*================ CREATE BUTTON  =================*/
+
+div.create-button {
+    margin-bottom: 20px;
+    margin-left: -20px;
+    background: #c5fe00;
+    padding: 10px;
+    width: 96px;
+    -webkit-transition: all 0.7s ease;
+}
+    div.create-button:hover {
+        -webkit-box-shadow: 0px 0px 20px #fff;
+    }
+
+    div.create-button:active {
+        -webkit-transform: scale(0.96);
+    }
+
+div.create-button a {
+    margin-left: 12px;
+    color: #222;
+    text-decoration: none;
+}
+    div.create-button a:hover {
+        color: darkred;
+        text-decoration: underline;
+
+    }

@@ -1,0 +1,205 @@
+﻿@model IEnumerable<FnR.Models.Subscription>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_WarehouseLayout.cshtml";
+    var undelivered = Model.Where(r => !r.Sent);
+    var delivered = Model.Where(r => r.Sent);
+
+    var allD = "selected-button";
+    var allUd = "selected-button";
+    var todayD = "";
+    var todayUd = "";
+    var weekD = "";
+    var weekUd = "";
+    var monthD = "";
+    var monthUd = "";
+
+    if (ViewBag.FUndelivered == "today")
+    {
+        undelivered = undelivered.Where(r => r.NextDeliveryDate.ToShortDateString() == DateTime.Now.ToShortDateString());
+        allUd = "";
+        todayUd = "selected-button";
+        weekUd = "";
+        monthUd = "";
+    }
+    else if (ViewBag.FUndelivered == "week")
+    {
+        var monday = DateTime.Now;
+        while (monday.DayOfWeek != DayOfWeek.Monday)
+        {
+            monday = monday.AddDays(-1);
+        }
+        undelivered = undelivered.Where(r => r.NextDeliveryDate >= monday && r.NextDeliveryDate <= monday.AddDays(5));
+        allUd = "";
+        todayUd = "";
+        weekUd = "selected-button";
+        monthUd = "";
+    }
+    else if (ViewBag.FUndelivered == "month")
+    {
+        undelivered = undelivered.Where(r => r.NextDeliveryDate.Month == DateTime.Now.Month);
+        allUd = "";
+        todayUd = "";
+        weekUd = "";
+        monthUd = "selected-button";
+    }
+
+
+    if (ViewBag.FDelivered == "today")
+    {
+        delivered = delivered.Where(r => r.NextDeliveryDate.ToShortDateString() == DateTime.Now.ToShortDateString());
+        allD = "";
+        todayD = "selected-button";
+        weekD = "";
+        monthD = "";
+    }
+    else if (ViewBag.FDelivered == "week")
+    {
+        var monday = DateTime.Now;
+        while (monday.DayOfWeek != DayOfWeek.Monday)
+        {
+            monday = monday.AddDays(-1);
+        }
+        delivered = delivered.Where(r => r.NextDeliveryDate >= monday && r.NextDeliveryDate <= monday.AddDays(5));
+        allD = "";
+        todayD = "";
+        weekD = "selected-button";
+        monthD = "";
+    }
+    else if (ViewBag.FDelivered == "month")
+    {
+        delivered = delivered.Where(r => r.NextDeliveryDate.Month == DateTime.Now.Month);
+        allD = "";
+        todayD = "";
+        weekD = "";
+        monthD = "selected-button";
+    }
+}
+
+
+<div id="delivery-content">
+    <div class="h2">
+        <h2>Delivery Information</h2>
+    </div>
+    <h3>Undelivered Products </h3>
+    <div class="button">
+        <a class="@allUd" style="margin-left: 3px;" href="@Url.Action("Index", new { fDelivered = ViewBag.FDelivered })">All Undelivered Products</a>
+        <a class="@todayUd" style="margin-left: 10px;" href="@Url.Action("Index", new { fUndelivered = "today", fDelivered = ViewBag.FDelivered })">Today's Delivery</a>
+        <a class="@weekUd" style="margin-left: 10px;" href="@Url.Action("Index", new { fUndelivered = "week", fDelivered = ViewBag.FDelivered })">This Week's Delivery</a>
+        <a class="@monthUd" style="margin-left: 10px;" href="@Url.Action("Index", new { fUndelivered = "month", fDelivered = ViewBag.FDelivered })">This Month's Delivery</a>
+    </div>
+    <table id="sortedTable-undelivered" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Vet Name
+                </th>
+                <th>Pet Owner
+                </th>
+                <th>Pet Owner's Address
+                </th>
+                <th>Pet Name
+                </th>
+                <th>Product
+                </th>
+                <th>Subscription Date
+                </th>
+                <th>Delivery Date
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in undelivered)
+            {
+                <tr>
+                    <td>
+                        @item.Vet.Name
+                    </td>
+                    <td>
+                        @item.User.FullName
+                    </td>
+                    <td>
+                        @item.User.Address
+                    </td>
+                    <td>
+                        @item.Pet.Name
+                    </td>
+                    <td>
+                        @item.Product.DisplayName
+                    </td>
+                    <td>
+                        @item.DateSubscribed.ToLongDateString()
+                    </td>
+                    <td>
+                        @item.NextDeliveryDate.ToLongDateString()
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sent", "Deliver", new { id = item.Id }, new { @class = item.User.Email + "|" + item.User.Address })
+                        @* @Html.ActionLink("Unsubscribe", "Delete", new { id = item.Id })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h3 style="color: green; margin-bottom: 40px; margin-top: 48px;">Delivered Products </h3>
+    <div class="button">
+        <a class="@allD" style="margin-left: 2px;" href="@Url.Action("Index", new { fUndelivered = ViewBag.FUndelivered })">All Delivered Products</a>
+        <a class="@todayD" style="margin-left: 10px;" href="@Url.Action("Index", new { fDelivered = "today", fUndelivered = ViewBag.FUndelivered })">Products Delivered Today</a>
+        <a class="@weekD" style="margin-left: 10px;" href="@Url.Action("Index", new { fDelivered = "week", fUndelivered = ViewBag.FUndelivered })">Products Delivered This Week</a>
+        <a class="@monthD" style="margin-left: 10px;" href="@Url.Action("Index", new { fDelivered = "month", fUndelivered = ViewBag.FUndelivered })">Products Delivered This Month</a>
+    </div>
+    <table id="sortedTable-delivered" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Vet Name
+                </th>
+                <th>Pet Owner
+                </th>
+                <th>Pet Owner's Address
+                </th>
+                <th>Pet Name
+                </th>
+                <th>Product
+                </th>
+                <th>Subscription Date
+                </th>
+                <th>Delivery Date
+                </th>
+                @*<th>Actions</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in delivered)
+            {
+                <tr>
+                    <td>
+                        @item.Vet.Name
+                    </td>
+                    <td>
+                        @item.User.FullName
+                    </td>
+                    <td>
+                        @item.User.Address
+                    </td>
+                    <td>
+                        @item.Pet.Name
+                    </td>
+                    <td>
+                        @item.Product.DisplayName
+                    </td>
+                    <td>
+                        @item.DateSubscribed.ToLongDateString()
+                    </td>
+                    <td>
+                        @item.NextDeliveryDate.ToLongDateString()
+                    </td>
+                    @*<td>
+                    @Html.ActionLink("Mark as Undelivered", "Deliver", new { id = item.Id })
+                </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

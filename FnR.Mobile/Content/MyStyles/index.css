@@ -1,0 +1,243 @@
+﻿body {
+}
+
+#sched table {
+    width: 100%;
+}
+
+#sched th {
+    background-color: gray;
+    padding: 5px;
+    border: solid 1px black;
+    text-align: left;
+    color: white;
+    font-weight: normal;
+}
+
+#sched td {
+    padding: 5px;
+    border: dotted 1px black;
+    text-align: left;
+}
+
+[data-role="header"] {
+    background: url('../../Content/Images/bg.jpg') repeat;
+}
+
+[data-role=page] #login-button, [data-role=page] #logout-button,  [data-role=page] #menu-button {
+    margin-top: 10px;
+}
+
+#login [data-role="header"] h1, #forgot_password [data-role="header"]  h1, #add-pets [data-role="header"]  h1 {
+    color: #444;
+    text-shadow: none;
+}
+
+[data-role=page] h1 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#sched [data-role=content] {
+}
+
+div#subscriptions h1, div#post-visit h1, div#sched h1 {
+    padding: 10px !important;
+}
+
+[data-role=page] h1 img {
+    width: 130px;
+}
+
+span.display-name {
+    display: block;
+    margin-right: 5px;
+}
+
+span.display-name .name {
+    color: forestgreen;
+    margin-left: 5px;
+}
+
+[data-role=content] {
+}
+
+[data-role=content] h1 {
+    text-align: center;
+    margin-bottom: 20px !important;
+    margin-top: 20px !important;
+}
+
+[data-role=content] p {
+    text-align: center;
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+}
+
+#main [data-role="content"] fieldset, #add-pets [data-role="content"] fieldset, #post-visit [data-role="content"] fieldset {
+    background: url('../../Content/Images/bg.jpg') repeat; 
+    border: 1px solid #888;
+    -webkit-box-shadow: 0px 0px 20px #999;
+    width: 90%;
+    border-radius: 6px;
+    padding: 5% !important;
+    margin-bottom: 15px !important; 
+}
+
+fieldset {
+    border: solid 1px #666;
+    width: 90%;
+    border-radius: 6px;
+    padding: 5% !important;
+    margin-bottom: 15px !important;
+}
+legend {
+    font-weight: bold !important;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    color: gray;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.select-container{
+}
+
+#condition-description {
+    min-height: 400px;
+    background-color: white;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#condition-description img {
+    width: 100% !important;
+}
+
+#condition-description-section {
+    min-height: 400px;
+    background-color: white;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#condition-description-section img {
+    width: 100% !important;
+}
+
+.unauthorized {
+    display: none;
+}
+
+.authorized {
+    
+}
+
+.display {
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.display .label {
+    float: left;
+    width: 45%;
+    text-align: left;
+    font-weight: bold;
+}
+
+.display .info {
+    float: right;
+    width: 45%;
+    text-align: left;
+}
+
+#info-productname {
+}
+
+.ui-select .ui-btn-txt{
+    font-size: 10px !important;
+}
+
+.vetname {
+    color: blue;
+}
+
+.subscription-info {
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+/*LOGIN DIALOG PAGE STYLE*/
+
+.login-page, .forgot-password-page {
+    background: url('../../Content/Images/content-bg.jpg') repeat;
+}
+
+[data-role="content"] .login-fieldset, [data-role="content"] .forgot-fieldset {
+    background: #222;
+    border: 1px solid #888;
+    -webkit-box-shadow: 0px 0px 20px #999;
+    margin: 0 auto;
+    width: 300px;
+}
+
+    [data-role="content"] .login-fieldset label, [data-role="content"] .forgot-fieldset label{
+        color: #aaa;
+        font-weight: normal;
+        font-size: 13px;
+        text-shadow: none;  
+    }
+
+    [data-role="content"] .login-fieldset  p {
+        color: #666;
+        text-shadow: none;
+    }
+
+    [data-role="content"] .forgot-fieldset legend {
+        text-shadow: none;
+        color: #eee;
+    }
+
+.login-page h4{
+    float: right;
+    margin: 2px;
+    font-size: 12px;
+    text-shadow: none;
+    text-decoration: none;
+    color: #aaa;
+}
+    .login-page h4:hover {
+        color: #fff;
+        text-decoration: underline;
+    }
+
+.login-bottom {
+    margin-top: 20px !important;
+}
+
+
+/*REGISTRATION PAGE STYLE*/
+
+.registration-page {
+     background: url('../../Content/Images/content-bg1.jpg') repeat;
+}
+
+[data-role="content"] .register-fieldset {
+    border: 1px solid #777 !important;
+    background: url('../../Content/Images/bg.jpg') repeat;
+   -webkit-box-shadow: 0px 0px 20px #666;
+}
+
+    [data-role="content"] .register-fieldset label {
+        color: #555;
+        font-weight: normal;
+        font-size: 16px;
+        text-shadow: none;  
+    }

@@ -1,0 +1,39 @@
+﻿body {
+}
+
+.dashboard {
+    background: url('../../Content/Images/bg-dashboard.jpg');
+    background-size: 1300px;
+}
+
+.emphasis {
+
+}
+.nav-container .nav .img {
+    width: 220px;
+    margin-top: -80px;
+    margin-left: -34px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.img:hover {
+    -webkit-transform: scale(0.8);
+    -moz-transform: scale(0.8);
+}
+.img:active {
+    -webkit-transform: scale(0.70);
+    -moz-transform: scale(0.70);
+}
+.nav p {
+    color: #000;
+    font-family: Marcellus, 'Oregon LDO', 'Titillium Web';
+    font-size: 18px;
+    color: #142837;
+ 
+}
+p:hover {
+    text-decoration: underline;
+}

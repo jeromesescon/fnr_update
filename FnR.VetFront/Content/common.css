@@ -1,0 +1,392 @@
+﻿body {
+    background-image: url('./Images/bg-vet.png');
+    background-repeat: repeat;
+    margin: 20px;
+    padding: 20px;
+}
+
+#far-logo {
+    text-align: center;
+}
+
+#far-logo img{
+    width: 250px;
+}
+
+.edit-condition fieldset {  
+    border: solid 1px  #666;
+    border-radius: 10px;
+    background: url('../Content/Images/bg.jpg') repeat;
+    -webkit-box-shadow: 0px 0px 20px #222;
+    -moz-box-shadow: 0px 0px 20px #222;    
+}
+
+fieldset, .dashboard, .list-container {
+    background-color: #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+fieldset .container {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.fieldset-container {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.dashboard {
+    width: 800px;
+    margin: 0 auto;
+    border: 1px solid #666;
+    -webkit-box-shadow: 0px 0px 10px #222;
+    -moz-box-shadow: 0px 0px 10px #222;
+}
+
+.list-container {
+    width: 90%;
+    margin: 0 auto;
+    background: rgba(252, 252, 252, 0.70);  
+    border: 1px solid #777;
+    -webkit-box-shadow: 0px 0px 14px #222;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0;  
+}
+
+.dashboard .nav-container {
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.nav-container .nav {
+    float: left;
+    padding: 20px;
+    margin-left: 135px;
+    margin-top: 25px;
+    margin-bottom: 80px;
+    width: 150px;
+    height: 80px;
+    text-align: center;
+    padding-top: 70px;
+    color: black;
+    font-family: 'Oregon LDO', 'Titillium Web', 'Marcellus';
+    text-decoration: none;
+}
+.nav a:hover{
+    text-decoration: overline;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.validation-summary-errors ul{
+    margin-top: 0;
+    color: red;
+    font-size: 13px;
+}
+
+.input-validation-error {
+    border: solid 1px red;
+}
+
+fieldset label {
+    float: left;
+    width: 140px;
+    text-align: left;
+    margin-top: 5px;
+}
+
+fieldset input[type=text], fieldset input[type=password], input[type=date], input[type=datetime], input[type=number], input[type=email] {
+    float: right;
+    width: 200px;
+}
+
+fieldset select {
+    float: right;
+    width: 204px;
+}
+
+legend .emphasis{
+    color:  #003b67;
+    font-size: 18px;
+}
+
+textarea {
+    width: 300px; 
+    height: 300px;
+    background-color: #eee !important;
+}
+
+.emphasis {
+    color: blue;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    border: solid 1px black;
+    padding: 5px 10px;
+    background-color: #003b67;
+    color: #ddd;
+    font-weight: normal;
+}
+
+td {
+    border: dotted 1px black;
+    padding: 5px 10px;
+    color: #000;
+    background-color: #fff;
+}
+
+.display-summary {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.display-summary .summary-label {
+    float: left;
+    width: 200px;
+    text-align: right;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.display-summary .summary-value-number {
+    float: left;
+    width: 50px;
+    text-align: left;
+}
+a {
+    text-decoration: underline;
+}
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.header-images {
+    text-align: center;
+}
+
+label, .label {
+    font-weight: bold;
+}
+
+#createbtn .btn {
+    float: right;
+    margin-top: 18px;
+    width: 60px;    
+}
+
+#backlistbtn {
+    margin-top: 16px;
+}
+
+.light-table-filter {
+    padding: 8px;
+    width: 240px;    
+}
+/*************
+Default Theme
+*************/
+/* overall */
+.tablesorter-default {
+	width: 100%;
+	font: 12px/18px Arial, Sans-serif;
+	color: #333;
+	background-color: #fff;
+	border-spacing: 2px;
+	margin: 10px 0 15px;
+	text-align: left;
+}
+
+/* header */
+.tablesorter-default th,
+.tablesorter-default thead td {
+	font: bold 12px/18px Arial, Sans-serif;
+	color: #000;
+	background-color: #fff;
+	border-collapse: collapse;
+	border-bottom: #ccc 2px solid;
+	padding: 0;
+}
+.tablesorter-default tfoot th,
+.tablesorter-default tfoot td {
+	border: 0;
+}
+.tablesorter-default .header,
+.tablesorter-default .tablesorter-header {
+	background-image: url(../Content/bg.gif);
+	background-position: center right;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	white-space: normal;
+	padding: 4px 20px 4px 4px;
+}
+.tablesorter-default thead .headerSortUp,
+.tablesorter-default thead .tablesorter-headerSortUp,
+.tablesorter-default thead .tablesorter-headerAsc {
+	background-image:  url(../Content/asc.gif);
+	border-bottom: #000 2px solid;
+}
+.tablesorter-default thead .headerSortDown,
+.tablesorter-default thead .tablesorter-headerSortDown,
+.tablesorter-default thead .tablesorter-headerDesc {
+	background-image:  url(../Content/desc.gif);
+	border-bottom: #000 2px solid;
+}
+.tablesorter-default thead .sorter-false {
+	background-image: none;
+	padding: 4px;
+}
+
+/* tfoot */
+.tablesorter-default tfoot .tablesorter-headerSortUp,
+.tablesorter-default tfoot .tablesorter-headerSortDown,
+.tablesorter-default tfoot .tablesorter-headerAsc,
+.tablesorter-default tfoot .tablesorter-headerDesc {
+	border-top: #000 2px solid;
+}
+
+/* tbody */
+.tablesorter-default td {
+	background-color: #fff;
+	border-bottom: #ccc 1px solid;
+	padding: 4px;
+	vertical-align: top;
+}
+
+/* hovered row colors */
+.tablesorter-default tbody > tr:hover > td,
+.tablesorter-default tbody > tr.even:hover > td,
+.tablesorter-default tbody > tr.odd:hover > td {
+	background: #fff;
+	color: #000;
+}
+
+/* table processing indicator */
+.tablesorter-default .tablesorter-processing {
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+	 background-image: url(../../Content/loading.gif) !important; 
+}
+
+/* Zebra Widget - row alternating colors */
+.tablesorter-default tr.odd td {
+	background-color: #dfdfdf;
+}
+.tablesorter-default tr.even td {
+	background-color: #efefef;
+}
+
+/* Column Widget - column sort colors */
+.tablesorter-default tr.odd td.primary {
+	background-color: #bfbfbf;
+}
+.tablesorter-default td.primary,
+.tablesorter-default tr.even td.primary {
+	background-color: #d9d9d9;
+}
+.tablesorter-default tr.odd td.secondary {
+	background-color: #d9d9d9;
+}
+.tablesorter-default td.secondary,
+.tablesorter-default tr.even td.secondary {
+	background-color: #e6e6e6;
+}
+.tablesorter-default tr.odd td.tertiary {
+	background-color: #e6e6e6;
+}
+.tablesorter-default td.tertiary,
+.tablesorter-default tr.even td.tertiary {
+	background-color: #f2f2f2;
+}
+
+/* caption */
+caption {
+	background: #fff;
+}
+
+/* filter widget */
+.tablesorter-default .tablesorter-filter-row td {
+	background: #eee;
+	border-bottom: #ccc 1px solid;
+	line-height: normal;
+	text-align: center; /* center the input */
+	-webkit-transition: line-height 0.1s ease;
+	-moz-transition: line-height 0.1s ease;
+	-o-transition: line-height 0.1s ease;
+	transition: line-height 0.1s ease;
+}
+/* optional disabled input styling */
+.tablesorter-default .tablesorter-filter-row .disabled {
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	cursor: not-allowed;
+}
+/* hidden filter row */
+.tablesorter-default .tablesorter-filter-row.hideme td {
+	/*** *********************************************** ***/
+	/*** change this padding to modify the thickness     ***/
+	/*** of the closed filter row (height = padding x 2) ***/
+	padding: 2px;
+	/*** *********************************************** ***/
+	margin: 0;
+	line-height: 0;
+	cursor: pointer;
+}
+.tablesorter-default .tablesorter-filter-row.hideme .tablesorter-filter {
+	height: 1px;
+	min-height: 0;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	/* don't use visibility: hidden because it disables tabbing */
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+/* filters */
+.tablesorter-default .tablesorter-filter {
+	width: 95%;
+	height: auto;
+	margin: 4px;
+	padding: 4px;
+	background-color: #fff;
+	border: 1px solid #bbb;
+	color: #333;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: height 0.1s ease;
+	-moz-transition: height 0.1s ease;
+	-o-transition: height 0.1s ease;
+	transition: height 0.1s ease;
+}
+
+/* ajax error row */
+.tablesorter .tablesorter-errorRow td {
+	cursor: pointer;
+	background-color: #e6bf99;
+}
+
+/* manage user */
+div#registerUser-content{
+    padding: 20px;
+    margin: 30px;
+    border: solid 1px #666;
+    border-radius: 10px;
+    background: url('../Content/Images/content-bg1.jpg') repeat;
+    padding-top: 0;
+    -webkit-box-shadow: 0px 0px 20px #222;
+    -moz-box-shadow: 0px 0px 20px #222;
+}
+

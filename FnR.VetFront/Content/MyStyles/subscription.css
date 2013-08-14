@@ -1,0 +1,76 @@
+﻿body {
+}
+
+.header-images{
+    text-align: center;
+}
+.header-images img {
+    width: 780px;
+}
+div .list-container {
+    background-image: linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+    background-image: -o-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+    background-image: -moz-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+    background-image: -webkit-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+    background-image: -ms-linear-gradient(bottom, rgb(245,245,245) 0%, rgb(102,190,237) 69%);
+
+    background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0, rgb(245,245,245)),
+	    color-stop(0.69, rgb(102,190,237))
+);  
+    border: 1px solid #777;
+    -webkit-box-shadow: 0px 0px 14px #222;
+}
+
+.backbtn img  {
+    text-decoration: none;
+    padding-right: 10px;
+    margin-left: 2px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    
+}
+    
+    .backbtn img:active {
+        text-decoration: none;
+        -webkit-transform: scale(0.88);
+        -moz-transform: scale(0.70);
+    }
+
+.createbtn img{
+    margin-left: -10px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+    .createbtn img:active {
+        -webkit-transform: scale(0.88);
+        -moz-transform: scale(0.70);
+    }
+
+.backlistbtn img {
+    position: absolute;
+    margin-left: 4px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+    .backlistbtn img:active {
+        -webkit-transform: scale(0.88);
+        -moz-transform: scale(0.70);
+    }
+
+div.button {
+    margin-top: 35px;
+}

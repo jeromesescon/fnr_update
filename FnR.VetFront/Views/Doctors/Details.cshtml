@@ -1,0 +1,30 @@
+﻿@model FnR.Models.Doctor
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Doctor</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vet.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vet.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

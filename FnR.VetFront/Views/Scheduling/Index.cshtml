@@ -1,0 +1,83 @@
+﻿@using FnR.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_VetLayout.cshtml";
+}
+
+@section styles
+{
+    <link href="~/Content/MyStyles/scheduling.css" rel="stylesheet" />
+}
+
+@section scripts
+{
+    <script src="~/Scripts/MyScripts/scheduling.js"></script>
+}
+
+<div id="scheduling">
+    <h1>Manage Vet Schedules</h1>
+    <h3>@Html.ActionLink("+ Create Schedule", "Create", "Scheduling")</h3>
+    <fieldset>
+        <legend>Schedules</legend>
+        <table>
+            <thead>
+                <tr>
+                    <th>Doctor in Charge</th>
+                    <th>Schedule Name</th>
+                    <th>Schedule Description</th>
+                    <th>Number of Events</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var schedule in ((List<Schedule>)ViewBag.Schedules).Where(r => !r.Name.ToLower().Contains("interval schedules")))
+                {
+                    <tr>
+                        <td>@schedule.Doctor.Name</td>
+                        <td>@schedule.Name</td>
+                        <td>@schedule.Description</td>
+                        <td>@schedule.Doctor.Schedules.Sum(r => r.Events.Count)</td>
+                        <td>
+                            @Html.ActionLink("Manage Schedule", "Edit", "Scheduling", new { id = @schedule.Id }, null) | 
+                            @Html.ActionLink("Delete Schedule", "Delete", "Scheduling", new { id = @schedule.Id }, null)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </fieldset>
+    <h3>@Html.ActionLink("+ Create Interval or One Time Events", "CreateSchedEvent", "Scheduling")</h3>
+    <fieldset>
+        <legend>Interval Events or One Time Events</legend>
+        <table>
+            <thead>
+                <tr>
+                    <th>Doctor in Charge</th>
+                    <th>Assigned To</th>
+                    <th>Event Title</th>
+                    <th>Start Date / Time</th>
+                    <th>End Date / Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var schedule in ((List<Schedule>)ViewBag.Schedules).Where(r => r.Name.ToLower().Contains("interval schedules")))
+                {
+                    foreach (var schedEvent in schedule.Events.OrderBy(r => r.StartDateTime))
+                    {
+                        <tr>
+                            <td>@schedule.Doctor.Name</td>
+                            <td>@schedule.Users.First().FullName</td>
+                            <td>@schedEvent.Title</td>
+                            <td>@schedEvent.StartDateTime.ToShortDateString() - @schedEvent.StartDateTime.ToLongTimeString()</td>
+                            <td>@schedEvent.EndDateTime.ToShortDateString() - @schedEvent.EndDateTime.ToLongTimeString()</td>
+                            <td>
+                                @Html.ActionLink("Remove", "DeleteEvent", "Scheduling", new { id = schedEvent.Id, redirectIndex = true }, null)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </fieldset>
+</div>

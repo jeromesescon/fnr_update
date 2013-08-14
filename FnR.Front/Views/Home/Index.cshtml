@@ -1,0 +1,25 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Felix and Rover Admin Dashboard";
+    Layout = "~/Views/Shared/_FnRLayout.cshtml";
+}
+
+<div id="home">
+    <a class="nav" href="@Url.Action("Index", "Breed")">
+        <img class="img" src="~/Content/Images/manage-breeds.png" /><img src="~/Content/Images/manage-breeds-icon.png" /></a>
+    <a class="nav" href="@Url.Action("Index", "Pet")">
+        <img class="img" src="~/Content/Images/manage-pets.png" /><img src="~/Content/Images/manage-pets-icon.png" /></a>
+    <a class="nav" href="@Url.Action("Index", "PetType")">
+        <img class="img" src="~/Content/Images/manage-pet-types.png" /><img src="~/Content/Images/manage-pet-types-icon.png" /></a>
+    <a class="nav" href="@Url.Action("Index", "Product")">
+        <img class="img" src="~/Content/Images/manage-products.png" /><img src="~/Content/Images/manage-products-icon.png" /></a>
+    <a class="nav" href="@Url.Action("Index", "Subscription")">
+        <img class="img" src="~/Content/Images/manage-subscription.png" /><img src="~/Content/Images/manage-subscription-icon.png" /></a>
+    <a class="nav" href="@Url.Action("Index", "User")">
+        <img class="img" src="~/Content/Images/manage-users.png" /><img src="~/Content/Images/manage-users-icon.png" /></a>
+    <a class="nav" id="manage-veterinarian" href="@Url.Action("Index", "Vet")">
+        <img class="img" src="~/Content/Images/manage-veterinarians.png" /><img src="~/Content/Images/manage-veterinarians-icon.png" /></a>
+    <a class="nav" id="manage-doctors" href="@Url.Action("Index", "Doctor")">
+        <img class="img" src="~/Content/Images/manage-veterinarians.png" />Manage Doctors</a>
+</div>
